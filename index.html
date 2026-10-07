@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Black Friday A Primeira Vez</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f4ef; --card:#ffffff; --ink:#16151a; --muted:#6b6874; --line:#e6e2d9;
+  --accent:#b4235a; --accent-soft:#fbe9f0; --ok:#15803d; --ok-soft:#e7f6ec;
+  --late:#c2410c; --late-soft:#fff1e6; --today:#1d4ed8; --today-soft:#e8efff;
+  --shadow:0 1px 2px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.04);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121116; --card:#1b1a21; --ink:#f2f0f5; --muted:#9c98a6; --line:#2c2a33;
+    --accent:#f0679b; --accent-soft:#3a1a27; --ok:#4ade80; --ok-soft:#14301f;
+    --late:#fb923c; --late-soft:#3a2414; --today:#7aa2ff; --today-soft:#1a2440;
+    --shadow:none;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121116; --card:#1b1a21; --ink:#f2f0f5; --muted:#9c98a6; --line:#2c2a33;
+  --accent:#f0679b; --accent-soft:#3a1a27; --ok:#4ade80; --ok-soft:#14301f;
+  --late:#fb923c; --late-soft:#3a2414; --today:#7aa2ff; --today-soft:#1a2440;
+  --shadow:none;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:24px 16px 80px}
+header.top{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;margin-bottom:20px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+h1{font-size:30px;line-height:1.1;margin:6px 0 4px;font-weight:800;letter-spacing:-.02em}
+.sub{color:var(--muted);margin:0}
+.kpis{display:flex;gap:12px;flex-wrap:wrap}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px;min-width:150px;box-shadow:var(--shadow)}
+.kpi b{display:block;font-size:22px;font-weight:800}
+.kpi span{font-size:12px;color:var(--muted)}
+.bar{height:6px;background:var(--line);border-radius:6px;overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .3s}
+.dates{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:16px}
+.date{flex:0 0 auto;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:13px}
+.date b{display:block;font-size:14px}
+.date.key{border-color:var(--accent);background:var(--accent-soft)}
+details.alerts{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--late);border-radius:14px;padding:4px 16px;margin-bottom:16px;box-shadow:var(--shadow)}
+details.alerts summary{cursor:pointer;font-weight:700;padding:10px 0;list-style:none}
+details.alerts summary::-webkit-details-marker{display:none}
+details.alerts summary::after{content:"+";float:right;color:var(--muted)}
+details.alerts[open] summary::after{content:"−"}
+.alerts ol{margin:0 0 14px;padding-left:20px}
+.alerts li{margin:0 0 8px;font-size:14px}
+.alerts li b{color:var(--ink)}
+.toolbar{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0;border-bottom:1px solid var(--line);margin-bottom:12px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.row+.row{margin-top:8px}
+select,input[type=search]{font:inherit;font-size:14px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+input[type=search]{flex:1;min-width:160px}
+.seg{display:inline-flex;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.seg button{font:inherit;font-size:13px;border:0;background:none;color:var(--muted);padding:8px 12px;cursor:pointer}
+.seg button.on{background:var(--ink);color:var(--bg)}
+.me{font-size:13px;color:var(--muted)}
+.people{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px;margin-bottom:18px}
+.person{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;cursor:pointer;text-align:left;font:inherit;color:inherit}
+.person.on{outline:2px solid var(--ink)}
+.person .nm{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600}
+.person .ct{font-size:12px;color:var(--muted);margin-top:2px}
+.dot{width:9px;height:9px;border-radius:50%;flex:0 0 auto}
+.phase{margin:22px 0 8px}
+.phase h2{font-size:18px;margin:0;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.phase h2 small{font-size:13px;color:var(--muted);font-weight:500}
+.phase .pp{font-size:12px;color:var(--muted);margin-left:auto}
+.task{display:grid;grid-template-columns:28px 78px 1fr;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:6px;align-items:start}
+.task.done{opacity:.55}
+.task.done .tt{text-decoration:line-through}
+.task.late{border-color:var(--late);background:linear-gradient(90deg,var(--late-soft),var(--card) 30%)}
+.task.today{border-color:var(--today);background:linear-gradient(90deg,var(--today-soft),var(--card) 30%)}
+.task input{width:20px;height:20px;margin:2px 0 0;accent-color:var(--ok);cursor:pointer}
+.when{font-size:13px;font-weight:700}
+.when small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.tt{font-weight:600}
+.tx{font-size:13.5px;color:var(--muted);margin-top:2px}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;align-items:center}
+.who{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;border:1px solid var(--line);border-radius:999px;padding:2px 9px}
+.tag{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:6px;padding:2px 7px}
+.tag.c{background:var(--accent-soft);color:var(--accent)}
+.tag.s{background:var(--today-soft);color:var(--today)}
+.tag.a{background:var(--late-soft);color:var(--late)}
+.tag.l{background:var(--late);color:#fff}
+.tag.h{background:var(--today);color:#fff}
+.chk{font-size:12px;color:var(--ok)}
+.empty{text-align:center;color:var(--muted);padding:40px 0}
+.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:4px 0 14px}
+footer.tools{margin-top:32px;padding-top:16px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.btn{font:inherit;font-size:13px;font-weight:600;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:8px 12px;cursor:pointer}
+.btn:hover{border-color:var(--ink)}
+.sync{font-size:12px;color:var(--muted);margin-left:auto}
+@media (max-width:640px){
+  h1{font-size:24px}
+  .task{grid-template-columns:24px 1fr}
+  .task .when{grid-column:2;display:flex;gap:6px;align-items:baseline}
+  .task .body{grid-column:2}
+  .kpi{min-width:0;flex:1}
+}
+@media print{
+  .toolbar,footer.tools,.people,details.alerts{display:none}
+  body{background:#fff}
+  .task{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div>
+    <div class="eyebrow">Black Friday 2026 · Operação</div>
+    <h1>A Primeira Vez</h1>
+    <p class="sub">by Bárbara Torres · Cronograma e tarefas da equipe</p>
+  </div>
+  <div class="kpis">
+    <div class="kpi"><b id="kPct">0%</b><span id="kCount">0 de 0 tarefas</span><div class="bar"><i id="kBar"></i></div></div>
+    <div class="kpi"><b id="kLate">0</b><span>atrasadas</span></div>
+    <div class="kpi"><b id="kNext">-</b><span id="kNextLbl">próximo marco</span></div>
+  </div>
+</header>
+
+<div class="dates" id="dates"></div>
+
+<details class="alerts">
+  <summary>Pontos de atenção e ajustes feitos no pré-cronograma (9)</summary>
+  <ol>
+    <li><b>Entrega de acesso.</b> O pré-cronograma colocava a entrega de acesso de 01 a 05/12. Quem compra em 22/11 precisa entrar na hora. Ajustei: entrega automática e imediata, com 01 a 05/12 como reforço de onboarding.</li>
+    <li><b>Carrinho às 22:00, live às 20:00.</b> Duas horas entre a revelação e o carrinho esfriam o pico de atenção. Recomendo abrir o carrinho dentro da live, logo após a revelação da oferta. Decisão da Bárbara e do Vitor. Mantive 22:00 até a decisão.</li>
+    <li><b>Ads desligados em 28/11.</b> A condição fecha em 27/11 às 23:59. Anúncio rodando depois disso gera clique sem oferta. Ajustei para desligar às 23:59 do dia 27.</li>
+    <li><b>Sem aviso do fim do Lote Balcão.</b> A sequência não tem disparo em 24/11, dia em que o lote vira. Incluí um aviso curto como sugestão, a aprovar.</li>
+    <li><b>Lote Plateia por 100 vagas.</b> Precisa de contador verificável e de uma regra para o caso de não vender 100 até 24/11. Sem isso, o lote vira promessa solta.</li>
+    <li><b>Prazo apertado de roteiros.</b> Hoje é 07/10. Decisões da oferta, roteiros e aprovação até 13/10, gravação de 14 a 16/10. Zero folga. As decisões da oferta precisam fechar até 10/10 para a copy da semana de vendas ser gravada no dia 16.</li>
+    <li><b>Garantia 7 + 21.</b> Falta definir o que muda entre os 7 e os 21 dias e o que acontece com o acesso no reembolso. Não publicar a página sem isso escrito.</li>
+    <li><b>Aprovação de anúncios em novembro.</b> A fila de revisão da Meta cresce na Black Friday. Criativos sobem com 48 a 72 h de antecedência de cada fase.</li>
+    <li><b>Tarefas novas.</b> Incluí itens que faltavam: plano de contingência, link reserva de checkout, FAQ e plantão de suporte, boas-vindas da lista, e-mail de revelação de 10/11 e fechamento da garantia em 27/12. Estão marcados como “Novo”.</li>
+    <li><b>Programação horária.</b> O pré-cronograma cita o documento “[Cronograma] Black Friday Barbara Torres”, que não veio no material. Os horários aqui seguem o pré-cronograma.</li>
+  </ol>
+</details>
+
+<div class="toolbar">
+  <div class="row">
+    <span class="me">Você é:</span>
+    <select id="me"></select>
+    <select id="phaseSel"><option value="">Todas as fases</option></select>
+    <div class="seg" id="statusSeg">
+      <button data-v="all" class="on">Todas</button>
+      <button data-v="open">Pendentes</button>
+      <button data-v="late">Atrasadas</button>
+      <button data-v="week">Próx. 7 dias</button>
+      <button data-v="done">Concluídas</button>
+    </div>
+  </div>
+  <div class="row">
+    <input type="search" id="q" placeholder="Buscar tarefa">
+    <button class="btn" id="clearF">Limpar filtros</button>
+  </div>
+</div>
+
+<div class="people" id="people"></div>
+<div class="legend">
+  <span><span class="tag c">Marco</span> decisão ou entrega crítica</span>
+  <span><span class="tag s">Novo</span> não estava no pré-cronograma</span>
+  <span><span class="tag a">Ajustado</span> corrigido em relação ao pré-cronograma</span>
+</div>
+
+<main id="list"></main>
+
+<footer class="tools">
+  <button class="btn" id="exp">Exportar progresso</button>
+  <button class="btn" id="imp">Importar progresso</button>
+  <input type="file" id="impFile" accept="application/json" hidden>
+  <button class="btn" id="prt">Imprimir</button>
+  <button class="btn" id="rst">Zerar checks</button>
+  <span class="sync" id="sync"></span>
+</footer>
+</div>
+
+<script>
+/* ================= CONFIGURAÇÃO =================
+   SYNC_URL: cole aqui a URL do Google Apps Script (arquivo sync-google-sheets.gs)
+   para que todos da equipe vejam os mesmos checks. Vazio = checks salvos só neste navegador.
+   YEAR: ano da campanha. Para trocar nomes das funções, edite RESP. */
+const CONFIG = { SYNC_URL: "", YEAR: 2026, POLL_SECONDS: 30 };
+
+const RESP = {
+  bar:{n:"Bárbara", c:"#be123c"},
+  vit:{n:"Vitor · Estratégia", c:"#7c3aed"},
+  ges:{n:"Édipo · Gestão", c:"#0e7490"},
+  cop:{n:"Copywriter", c:"#d97706"},
+  edi:{n:"Editor de vídeo", c:"#2563eb"},
+  des:{n:"Designer", c:"#db2777"},
+  tra:{n:"Gestor de tráfego", c:"#059669"},
+  tec:{n:"Tecnologia · Checkout", c:"#64748b"},
+  soc:{n:"Social media", c:"#ca8a04"},
+  sup:{n:"Suporte", c:"#65a30d"},
+  tod:{n:"Todos", c:"#111827"}
+};
+
+const PHASES = [
+  {id:1, n:"Decisões e roteiros", p:"07 a 13/10"},
+  {id:2, n:"Gravações", p:"14 a 16/10"},
+  {id:3, n:"Produção e montagem", p:"17 a 28/10"},
+  {id:4, n:"Revisão e go/no-go", p:"29 a 31/10"},
+  {id:5, n:"Ato I · O sinal", p:"01 a 09/11"},
+  {id:6, n:"Ato II · Revelação e convite", p:"10 a 16/11"},
+  {id:7, n:"Ato III · Expectativa", p:"17 a 21/11"},
+  {id:8, n:"Ato IV · Vendas", p:"22 a 26/11"},
+  {id:9, n:"Ato V · O silêncio", p:"27 e 28/11"},
+  {id:10, n:"Pós-campanha", p:"dezembro"}
+];
+
+const KEY_DATES = [
+  ["13/10","Oferta congelada",1],["14 a 16/10","Gravações",0],["31/10","Go/no-go",1],
+  ["01/11","Primeiro teaser",0],["10/11","Revelação",1],["20/11","Decisão de escala",0],
+  ["22/11","Estreia 20:00",1],["24/11","Fim Balcão",0],["27/11","Silêncio e fim 23:59",1]
+];
+
+/* f = fase | d = data MM-DD | r = responsáveis | t = tarefa | x = detalhe | k = c (marco), s (novo), a (ajustado) */
+const TASKS = [
+/* FASE 1 */
+{id:"t001",f:1,d:"10-07",r:["ges"],k:"c",t:"Kickoff: apresentar este cronograma e confirmar quem ocupa cada função",x:"Nomear copywriter, editor, designer, tráfego, tecnologia, social media e suporte."},
+{id:"t002",f:1,d:"10-08",r:["ges"],t:"Criar grupo da operação e rotina de status",x:"Sugestão: status rápido seg, qua e sex até 31/10. Diário a partir de 01/11."},
+{id:"t003",f:1,d:"10-09",r:["bar","vit"],k:"c",t:"Definir parcelamento e preço final de divulgação",x:"R$ 997 à vista. Fechar número de parcelas, com ou sem juros, e como aparece na página."},
+{id:"t004",f:1,d:"10-09",r:["vit"],k:"c",t:"Fechar regras dos lotes Plateia, Balcão e Galeria",x:"Plateia: 100 primeiras vendas, com contador verificável e regra se não bater 100 até 24/11. Balcão: até 24/11 às 23:59. Galeria: 25 a 27/11, só a coleção."},
+{id:"t005",f:1,d:"10-10",r:["bar"],k:"c",t:"Definir brinde do Lote Plateia e bônus do Lote Balcão",x:"Real e entregável. Informar formato e prazo de entrega para Tecnologia."},
+{id:"t006",f:1,d:"10-10",r:["vit","tec"],k:"c",t:"Validar por escrito a garantia de 30 dias (7 + 21)",x:"O que muda entre os 7 e os 21 dias, como o aluno pede e o que acontece com o acesso. Confirmar que a plataforma suporta."},
+{id:"t007",f:1,d:"10-10",r:["vit"],t:"Aprovar ou descartar o order bump",x:"+12 meses do app Anatomia dos Virais por R$ 97. Depende de viabilidade operacional."},
+{id:"t008",f:1,d:"10-10",r:["vit","bar"],t:"Aprovar ou descartar o upsell",x:"Revisão de roteiros pelo time (30 vagas) ou mentoria coletiva de estreia. Definir quem entrega e em quanto tempo."},
+{id:"t009",f:1,d:"10-10",r:["soc","vit"],t:"Pedir depoimentos verificáveis de alunos com autorização de uso",x:"Prazo de recebimento: 16/10. Base do dia da prova (24/11)."},
+{id:"t010",f:1,d:"10-11",r:["bar"],t:"Escolher a frase-núcleo da campanha",x:"Opção 1: “Este ano, vou fazer do meu jeito.” Opção 2: “Essa é a primeira vez.”"},
+{id:"t011",f:1,d:"10-11",r:["vit"],t:"Validar a tabela âncora x preço avulso vigente",x:"Documentar a fonte de cada âncora. Temas & Roteiros e Escola de Oradores custam R$ 297 avulso. Agente IA tinha previsão de R$ 697. Página e lives mostram essa diferença."},
+{id:"t012",f:1,d:"10-11",r:["cop"],t:"Roteiro final do manifesto (2 a 4 min)",x:"Base no planejamento. Decidir o destino do parágrafo riscado sobre abrir as contas."},
+{id:"t013",f:1,d:"10-11",r:["cop"],t:"Roteiro do episódio de revelação do Comunicando.VOZ"},
+{id:"t014",f:1,d:"10-12",r:["cop"],t:"Roteiros dos teasers de 01, 04 e 07/11 e do episódio teaser do podcast",x:"Pistas de algo feito pela primeira vez, ligadas à trajetória dela. Proibido citar Black Friday."},
+{id:"t015",f:1,d:"10-12",r:["cop"],t:"Roteiros dos reels de continuação (13 e 16/11) e “para quem é” (18 e 19/11)",x:"CTA para a lista. Sem stack, sem preço, sem checkout."},
+{id:"t016",f:1,d:"10-12",r:["vit"],t:"Decidir se parceiros e afiliados entram na operação"},
+{id:"t017",f:1,d:"10-12",r:["tec","vit"],k:"a",t:"Confirmar entrega automática e imediata dos 9 entregáveis após a compra",x:"O pré-cronograma previa entrega de acesso de 01 a 05/12. Comprador precisa de acesso no ato."},
+{id:"t018",f:1,d:"10-13",r:["cop"],t:"Roteiros das peças da semana de vendas",x:"Matemática: vídeo longo e reel complementar (23/11). Depoimentos (24/11). Ordem de consumo (25/11). “Para quem não é” (26/11). Última chamada (27/11)."},
+{id:"t019",f:1,d:"10-13",r:["bar"],k:"c",t:"Aprovar a voz de todos os roteiros que serão gravados"},
+{id:"t020",f:1,d:"10-13",r:["ges"],k:"c",t:"MARCO: regras da oferta aprovadas e congeladas",x:"Stack, preço, lotes, garantia, bump e upsell. A partir daqui nada muda."},
+
+/* FASE 2 */
+{id:"t021",f:2,d:"10-14",r:["bar","edi"],t:"Gravação dia 1: manifesto completo e episódio de revelação"},
+{id:"t022",f:2,d:"10-14",r:["tra"],t:"Levantar CPL e CAC de 2025 no CSV como referência",x:"Referência de teto para os checkpoints. Sem extrapolar como meta."},
+{id:"t023",f:2,d:"10-15",r:["bar","edi"],t:"Gravação dia 2: teasers, episódio teaser, reels de continuação e “para quem é”"},
+{id:"t024",f:2,d:"10-16",r:["bar","edi"],t:"Gravação dia 3: peças da semana de vendas",x:"Matemática, ordem de consumo, “Para quem não é” e última chamada."},
+{id:"t025",f:2,d:"10-16",r:["soc"],t:"Fechar banco de depoimentos com autorização assinada"},
+
+/* FASE 3 */
+{id:"t026",f:3,d:"10-20",r:["des"],t:"Key visual da campanha “A Primeira Vez”",x:"Paleta, tipografia e assinatura “by Bárbara Torres”. Base de páginas, thumbs e criativos."},
+{id:"t027",f:3,d:"10-20",r:["cop"],t:"Copy da página de captura da lista da estreia"},
+{id:"t028",f:3,d:"10-20",r:["cop"],k:"s",t:"Copy da mensagem de boas-vindas da lista (e-mail e WhatsApp)"},
+{id:"t029",f:3,d:"10-22",r:["cop"],t:"Copy da página de vendas",x:"Stack na ordem falar, soar, aparecer, posicionar. Conta de R$ 9.767 com âncora x avulso vigente. Lotes, garantia, FAQ e para quem não é."},
+{id:"t030",f:3,d:"10-22",r:["cop"],t:"Copy dos anúncios por fase",x:"Descoberta, captação, antecipação e vendas. Na venda, um ângulo por capítulo do dia."},
+{id:"t031",f:3,d:"10-22",r:["edi"],t:"Editar o manifesto completo (Instagram e YouTube)"},
+{id:"t032",f:3,d:"10-23",r:["edi"],t:"Editar episódio teaser e episódio de revelação do podcast"},
+{id:"t033",f:3,d:"10-24",r:["edi"],t:"Cortes do manifesto: 2 ou 3 de 30 a 45 s e variações de 10 a 20 s",x:"Aberturas diferentes para teste em ads."},
+{id:"t034",f:3,d:"10-24",r:["cop"],t:"Escrever sequência de 7 e-mails/WhatsApp e e-mail de revelação de 10/11"},
+{id:"t035",f:3,d:"10-24",r:["tec"],t:"Montar página de captura com formulário, consentimento e automação",x:"Registrar origem e consentimento de cada contato."},
+{id:"t036",f:3,d:"10-24",r:["tec"],t:"Configurar checkout: produto, parcelamento, order bump e upsell"},
+{id:"t037",f:3,d:"10-26",r:["edi"],t:"Editar teasers e reels de continuação"},
+{id:"t038",f:3,d:"10-26",r:["tec"],t:"Cupons dos lotes com trocas programadas e limite de 100 no Plateia",x:"Troca em 24/11 às 23:59 e Galeria a partir de 25/11 às 00:00."},
+{id:"t039",f:3,d:"10-26",r:["tec"],t:"Pixel, API de conversões, UTMs e dashboard de acompanhamento"},
+{id:"t040",f:3,d:"10-27",r:["tec"],t:"Montar página de vendas (oculta até 22/11)"},
+{id:"t041",f:3,d:"10-27",r:["tec"],t:"Página de obrigado e fluxo de entrega automática de acesso"},
+{id:"t042",f:3,d:"10-27",r:["des"],t:"Thumbnails do YouTube e capas dos episódios"},
+{id:"t043",f:3,d:"10-27",r:["des"],t:"Criativos estáticos para ads"},
+{id:"t044",f:3,d:"10-27",r:["tra"],t:"Estrutura de campanhas por fase e públicos",x:"Descoberta, captação, antecipação e vendas. Públicos de engajamento, lista e exclusão de compradores."},
+{id:"t045",f:3,d:"10-27",r:["cop"],t:"Legendas de todos os posts de 01 a 27/11"},
+{id:"t046",f:3,d:"10-28",r:["edi"],t:"Editar peças da semana de vendas"},
+{id:"t047",f:3,d:"10-28",r:["des"],t:"Cartaz da programação da semana e tabela visual da conta"},
+{id:"t048",f:3,d:"10-28",r:["tra"],t:"Documentar a regra de escala de verba",x:"R$ 100 mil base. R$ 150 mil e R$ 200 mil só com dados dos checkpoints. Distribuição 10% descoberta, 45% captação, 5% antecipação, 30% vendas, 10% reserva."},
+{id:"t049",f:3,d:"10-28",r:["tec"],k:"c",t:"Teste de ponta a ponta com compra real",x:"Compra, bump, upsell, cupom de lote, acesso liberado e reembolso."},
+{id:"t050",f:3,d:"10-28",r:["tec"],k:"s",t:"Criar link de checkout reserva para contingência"},
+{id:"t051",f:3,d:"10-28",r:["cop","sup"],k:"s",t:"FAQ e respostas prontas para o suporte"},
+{id:"t052",f:3,d:"10-28",r:["tec"],t:"Agendar sequência de e-mails e WhatsApp",x:"Somente contatos com permissão."},
+{id:"t053",f:3,d:"10-28",r:["vit","des"],t:"Brief e cartaz para parceiros (se aprovados)"},
+
+/* FASE 4 */
+{id:"t054",f:4,d:"10-29",r:["tra"],k:"c",t:"Subir criativos de descoberta para aprovação da Meta",x:"Novembro tem fila de revisão. Subir com 48 a 72 h de antecedência."},
+{id:"t055",f:4,d:"10-29",r:["soc"],t:"Agendar posts de 01 a 09/11"},
+{id:"t056",f:4,d:"10-30",r:["ges"],k:"s",t:"Plano de contingência",x:"Checkout cai na live, live cai, anúncio reprovado, página fora do ar. Quem faz o quê em cada caso."},
+{id:"t057",f:4,d:"10-30",r:["sup"],k:"s",t:"Treinar suporte e montar escala de plantão de 22 a 27/11"},
+{id:"t058",f:4,d:"10-30",r:["ges"],t:"Revisão geral: peças, páginas, checkout, mídia e comunicação"},
+{id:"t059",f:4,d:"10-31",r:["tod"],k:"c",t:"MARCO: reunião de go/no-go"},
+
+/* FASE 5 */
+{id:"t060",f:5,d:"11-01",r:["soc"],t:"Publicar teaser 01 (sem Black Friday)"},
+{id:"t061",f:5,d:"11-01",r:["tra"],t:"Ads de descoberta no ar",x:"R$ 10 mil no cenário base. Testar aberturas dos teasers."},
+{id:"t062",f:5,d:"11-04",r:["soc"],t:"Publicar teaser 02"},
+{id:"t063",f:5,d:"11-05",r:["tra","vit"],k:"c",t:"CHECKPOINT de descoberta",x:"Retenção, taxa de gancho e custo por mil. Pausar o que não segura atenção."},
+{id:"t064",f:5,d:"11-05",r:["soc"],t:"Publicar episódio teaser do podcast e versão no YouTube",x:"Data sugerida. Sem revelar o evento."},
+{id:"t065",f:5,d:"11-07",r:["soc"],t:"Publicar teaser 03"},
+{id:"t066",f:5,d:"11-08",r:["tra"],t:"Campanhas de captação aprovadas e prontas para 10/11"},
+{id:"t067",f:5,d:"11-09",r:["tec"],t:"Teste final da página de captura e da automação"},
+
+/* FASE 6 */
+{id:"t068",f:6,d:"11-10",r:["soc"],k:"c",t:"Publicar manifesto no Instagram e YouTube e episódio de revelação"},
+{id:"t069",f:6,d:"11-10",r:["tec"],t:"Página de captura no ar"},
+{id:"t070",f:6,d:"11-10",r:["tra"],t:"Ads de captação no ar",x:"R$ 45 mil no cenário base. Cortes do manifesto com CTA para a lista. CPL de 2025 como teto de referência."},
+{id:"t071",f:6,d:"11-10",r:["tec"],k:"s",t:"Disparar e-mail de revelação para a base com permissão"},
+{id:"t072",f:6,d:"11-10",r:["bar"],k:"s",t:"Stories com bastidor e convite para a lista"},
+{id:"t073",f:6,d:"11-12",r:["tod"],k:"c",t:"CHECKPOINT 1: custo por lead e qualidade dos inscritos"},
+{id:"t074",f:6,d:"11-13",r:["soc"],t:"Publicar reel de continuação 1 com convite para a lista"},
+{id:"t075",f:6,d:"11-14",r:["cop"],t:"Roteiros finais da live de estreia e da live de fechamento",x:"Fechamento com os dez segundos de silêncio."},
+{id:"t076",f:6,d:"11-16",r:["soc"],t:"Publicar reel de continuação 2 com convite para a lista"},
+
+/* FASE 7 */
+{id:"t077",f:7,d:"11-17",r:["soc"],t:"Publicar cartaz da programação da semana"},
+{id:"t078",f:7,d:"11-17",r:["tra"],t:"Ads de antecipação no ar",x:"R$ 5 mil. Públicos engajados e retargeting."},
+{id:"t079",f:7,d:"11-17",r:["vit"],t:"Compartilhar cartaz com 2 ou 3 parceiros (se aprovados)"},
+{id:"t080",f:7,d:"11-18",r:["bar"],t:"Aprovar roteiros das lives"},
+{id:"t081",f:7,d:"11-18",r:["soc"],t:"Publicar conteúdo “para quem é a coleção” (1 de 2)",x:"Sem stack e sem preço."},
+{id:"t082",f:7,d:"11-19",r:["soc"],t:"Publicar conteúdo “para quem é a coleção” (2 de 2)"},
+{id:"t083",f:7,d:"11-20",r:["tod"],k:"c",t:"CHECKPOINT 2: decisão de escala da verba"},
+{id:"t084",f:7,d:"11-20",r:["tec"],t:"Disparo 1: “Faltam dois dias” (sem link de compra)"},
+{id:"t085",f:7,d:"11-21",r:["tec"],t:"Disparo 2: “Amanhã, pela primeira vez”"},
+{id:"t086",f:7,d:"11-21",r:["bar","tec"],t:"Ensaio técnico da live de estreia"},
+{id:"t087",f:7,d:"11-21",r:["tec"],t:"Página de vendas pré-testada e cupons conferidos"},
+{id:"t088",f:7,d:"11-21",r:["tra"],t:"Campanhas de vendas aprovadas pela Meta"},
+
+/* FASE 8 */
+{id:"t089",f:8,d:"11-22",r:["bar"],k:"c",t:"Live de estreia às 20:00: revelação da oferta"},
+{id:"t090",f:8,d:"11-22",r:["tec"],k:"a",t:"Abrir o carrinho com o Lote Plateia",x:"Pré-cronograma: 22:00. Recomendação: abrir dentro da live, após a revelação. Confirmar horário."},
+{id:"t091",f:8,d:"11-22",r:["tra"],t:"Ads de vendas no ar",x:"R$ 30 mil no cenário base. Um criativo por capítulo do dia."},
+{id:"t092",f:8,d:"11-22",r:["tec"],t:"Disparo 3: “A Primeira Vez começou” (com link)"},
+{id:"t093",f:8,d:"11-22",r:["sup"],k:"s",t:"Plantão de suporte durante e após a live"},
+{id:"t094",f:8,d:"11-22",r:["tra","ges"],t:"Relatório 21:00: vendas, CAC, frequência e checkout"},
+{id:"t095",f:8,d:"11-23",r:["soc"],t:"Publicar a matemática: vídeo longo no YouTube e reel complementar"},
+{id:"t096",f:8,d:"11-23",r:["tec"],t:"Disparo 4: “A conta aberta”"},
+{id:"t097",f:8,d:"11-23",r:["tra","ges"],t:"Relatório 21:00: vendas, CAC, frequência e checkout"},
+{id:"t098",f:8,d:"11-24",r:["soc"],t:"Publicar reel de depoimentos"},
+{id:"t099",f:8,d:"11-24",r:["tec"],k:"s",t:"Aviso do fim do Lote Balcão (e-mail e WhatsApp)",x:"Não estava na sequência. Aprovar com o Vitor."},
+{id:"t100",f:8,d:"11-24",r:["tec"],k:"c",t:"23:59: fim do Lote Balcão, conferir troca do cupom"},
+{id:"t101",f:8,d:"11-24",r:["tra","ges"],t:"Relatório 21:00: vendas, CAC, frequência e checkout"},
+{id:"t102",f:8,d:"11-25",r:["tec"],t:"Conferir Lote Galeria ativo desde 00:00"},
+{id:"t103",f:8,d:"11-25",r:["soc"],t:"Publicar reel ou carrossel da ordem de consumo",x:"Falar, soar, aparecer, posicionar."},
+{id:"t104",f:8,d:"11-25",r:["tec"],t:"Disparo 5: “Como usar a coleção”"},
+{id:"t105",f:8,d:"11-25",r:["tra","ges"],t:"Relatório 21:00: vendas, CAC, frequência e checkout"},
+{id:"t106",f:8,d:"11-26",r:["soc"],t:"Publicar reel “Para quem não é” com horário exato de encerramento"},
+{id:"t107",f:8,d:"11-26",r:["tec"],t:"Disparo 6: “Para quem não é” e horário de encerramento"},
+{id:"t108",f:8,d:"11-26",r:["tra","ges"],t:"Relatório 21:00: vendas, CAC, frequência e checkout"},
+
+/* FASE 9 */
+{id:"t109",f:9,d:"11-27",r:["bar"],k:"c",t:"Live de fechamento às 20:00 com dez segundos de silêncio"},
+{id:"t110",f:9,d:"11-27",r:["soc"],t:"Publicar peças de última chamada com o horário real"},
+{id:"t111",f:9,d:"11-27",r:["tec"],t:"Disparo 7: “O silêncio” e última chamada"},
+{id:"t112",f:9,d:"11-27",r:["tra","ges"],t:"Relatório 21:00: vendas, CAC, frequência e checkout"},
+{id:"t113",f:9,d:"11-27",r:["tec"],k:"c",t:"23:59: desativar cupons e congelar o checkout",x:"Sem prorrogação."},
+{id:"t114",f:9,d:"11-27",r:["tra"],k:"a",t:"23:59: desligar todos os ads de vendas",x:"O pré-cronograma desligava em 28/11."},
+{id:"t115",f:9,d:"11-28",r:["soc","bar"],k:"s",t:"Post de agradecimento e encerramento"},
+
+/* FASE 10 */
+{id:"t116",f:10,d:"12-05",r:["sup","tec"],k:"a",t:"Reforço de onboarding e conferência de acessos",x:"Acesso já liberado na compra. Aqui é o reforço."},
+{id:"t117",f:10,d:"12-05",r:["sup"],t:"Recolher dúvidas frequentes e tratar reembolsos dentro da garantia"},
+{id:"t118",f:10,d:"12-08",r:["cop","vit"],t:"Convite de diagnóstico do Ciclo 90 para compradores"},
+{id:"t119",f:10,d:"12-10",r:["tra","vit"],t:"Análise por canal, lote e coorte"},
+{id:"t120",f:10,d:"12-15",r:["vit"],t:"Entregar revisões de roteiros do upsell (se aprovado)"},
+{id:"t121",f:10,d:"12-15",r:["tod"],k:"c",t:"Relatório final de aprendizados e reunião de retrospectiva"},
+{id:"t122",f:10,d:"12-28",r:["vit"],k:"s",t:"Fechar número de reembolsos após o fim da garantia",x:"Garantia de 30 dias das últimas vendas termina em 27/12."}
+];
+
+/* ================= ESTADO ================= */
+const LS_STATE = "bf26-bt-state-v1", LS_ME = "bf26-bt-me";
+let state = {};
+function lsGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function lsSet(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+try{state = JSON.parse(lsGet(LS_STATE)||"{}")||{}}catch(e){state={}}
+let me = lsGet(LS_ME)||"";
+const filt = {resp:"", phase:"", status:"all", q:""};
+
+const WD = ["dom","seg","ter","qua","qui","sex","sáb"];
+function toDate(d){const [m,dd]=d.split("-").map(Number);return new Date(CONFIG.YEAR,m-1,dd)}
+function today0(){const n=new Date();return new Date(n.getFullYear(),n.getMonth(),n.getDate())}
+function fmt(d){const x=toDate(d);return {d:String(x.getDate()).padStart(2,"0")+"/"+String(x.getMonth()+1).padStart(2,"0"), w:WD[x.getDay()]}}
+function status(t){
+  if(state[t.id]&&state[t.id].d) return "done";
+  const diff=(toDate(t.d)-today0())/864e5;
+  if(diff<0) return "late";
+  if(diff===0) return "today";
+  return "open";
+}
+function esc(s){return String(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+
+/* ================= RENDER ================= */
+function renderStatic(){
+  document.getElementById("dates").innerHTML = KEY_DATES.map(([d,l,k])=>`<div class="date${k?" key":""}"><b>${d}</b>${l}</div>`).join("");
+  const meSel=document.getElementById("me");
+  meSel.innerHTML='<option value="">Selecione seu nome</option>'+Object.entries(RESP).filter(([k])=>k!=="tod").map(([k,v])=>`<option value="${k}"${k===me?" selected":""}>${esc(v.n)}</option>`).join("");
+  meSel.onchange=e=>{me=e.target.value;lsSet(LS_ME,me)};
+  document.getElementById("phaseSel").innerHTML+=PHASES.map(p=>`<option value="${p.id}">${esc(p.n)}</option>`).join("");
+}
+
+function render(){
+  const t0=today0();
+  // KPIs
+  const done=TASKS.filter(t=>status(t)==="done").length;
+  const late=TASKS.filter(t=>status(t)==="late").length;
+  const pct=Math.round(done/TASKS.length*100);
+  kPct.textContent=pct+"%"; kCount.textContent=`${done} de ${TASKS.length} tarefas`; kBar.style.width=pct+"%"; kLate.textContent=late;
+  const nx=TASKS.filter(t=>t.k==="c"&&status(t)!=="done"&&toDate(t.d)>=t0).sort((a,b)=>toDate(a.d)-toDate(b.d))[0];
+  if(nx){const days=Math.round((toDate(nx.d)-t0)/864e5);kNext.textContent=days===0?"hoje":days+(days===1?" dia":" dias");kNextLbl.textContent=fmt(nx.d).d+" · "+nx.t.replace(/^MARCO: |^CHECKPOINT[^:]*: /,"").slice(0,40);}
+  else{kNext.textContent="-";kNextLbl.textContent="próximo marco"}
+
+  // pessoas
+  document.getElementById("people").innerHTML=Object.entries(RESP).map(([k,v])=>{
+    const ts=TASKS.filter(t=>t.r.includes(k)); if(!ts.length) return "";
+    const dn=ts.filter(t=>status(t)==="done").length, lt=ts.filter(t=>status(t)==="late").length;
+    return `<button class="person${filt.resp===k?" on":""}" data-k="${k}"><div class="nm"><span class="dot" style="background:${v.c}"></span>${esc(v.n)}</div><div class="ct">${dn}/${ts.length} feitas${lt?` · <span style="color:var(--late)">${lt} atrasada${lt>1?"s":""}</span>`:""}</div><div class="bar"><i style="width:${Math.round(dn/ts.length*100)}%;background:${v.c}"></i></div></button>`;
+  }).join("");
+  document.querySelectorAll(".person").forEach(b=>b.onclick=()=>{filt.resp=filt.resp===b.dataset.k?"":b.dataset.k;render()});
+
+  // lista
+  const q=filt.q.trim().toLowerCase();
+  const wk=new Date(t0);wk.setDate(wk.getDate()+7);
+  let html="";
+  PHASES.forEach(p=>{
+    if(filt.phase&&String(p.id)!==filt.phase) return;
+    const all=TASKS.filter(t=>t.f===p.id);
+    const ts=all.filter(t=>{
+      const s=status(t);
+      if(filt.resp&&!t.r.includes(filt.resp)) return false;
+      if(filt.status==="open"&&s==="done") return false;
+      if(filt.status==="done"&&s!=="done") return false;
+      if(filt.status==="late"&&s!=="late") return false;
+      if(filt.status==="week"&&(s==="done"||toDate(t.d)<t0||toDate(t.d)>wk)) return false;
+      if(q&&!(t.t+" "+(t.x||"")+" "+t.r.map(r=>RESP[r].n).join(" ")).toLowerCase().includes(q)) return false;
+      return true;
+    }).sort((a,b)=>toDate(a.d)-toDate(b.d));
+    if(!ts.length) return;
+    const pd=all.filter(t=>status(t)==="done").length;
+    html+=`<section class="phase"><h2>${esc(p.n)} <small>${esc(p.p)}</small><span class="pp">${pd}/${all.length}</span></h2></section>`;
+    ts.forEach(t=>{
+      const s=status(t), f=fmt(t.d), st=state[t.id];
+      const tags=[];
+      if(t.k==="c") tags.push('<span class="tag c">Marco</span>');
+      if(t.k==="s") tags.push('<span class="tag s">Novo</span>');
+      if(t.k==="a") tags.push('<span class="tag a">Ajustado</span>');
+      if(s==="late") tags.push('<span class="tag l">Atrasada</span>');
+      if(s==="today") tags.push('<span class="tag h">Hoje</span>');
+      const who=t.r.map(r=>`<span class="who"><span class="dot" style="background:${RESP[r].c}"></span>${esc(RESP[r].n)}</span>`).join("");
+      const by=st&&st.d?`<span class="chk">✓ ${esc(st.by?(RESP[st.by]?RESP[st.by].n:st.by):"")}${st.at?" em "+esc(st.at):""}</span>`:"";
+      html+=`<div class="task ${s}"><input type="checkbox" data-id="${t.id}"${s==="done"?" checked":""} aria-label="Concluir"><div class="when">${f.d}<small>${f.w}</small></div><div class="body"><div class="tt">${esc(t.t)}</div>${t.x?`<div class="tx">${esc(t.x)}</div>`:""}<div class="meta">${who}${tags.join("")}${by}</div></div></div>`;
+    });
+  });
+  list.innerHTML=html||'<div class="empty">Nenhuma tarefa com esses filtros.</div>';
+  list.querySelectorAll("input[type=checkbox]").forEach(cb=>cb.onchange=()=>toggle(cb.dataset.id,cb.checked));
+}
+
+function stamp(){const n=new Date();return String(n.getDate()).padStart(2,"0")+"/"+String(n.getMonth()+1).padStart(2,"0")+" "+String(n.getHours()).padStart(2,"0")+":"+String(n.getMinutes()).padStart(2,"0")}
+function toggle(id,d){
+  const rec={d:!!d,by:d?me:"",at:d?stamp():""};
+  state[id]=rec; lsSet(LS_STATE,JSON.stringify(state)); render();
+  if(CONFIG.SYNC_URL){
+    fetch(CONFIG.SYNC_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify(Object.assign({id},rec))})
+      .then(()=>setSync("Sincronizado "+stamp().slice(6))).catch(()=>setSync("Falha ao sincronizar. Check salvo neste navegador."));
+  }
+}
+
+/* ================= SYNC ================= */
+function setSync(m){document.getElementById("sync").textContent=m}
+function pull(){
+  if(!CONFIG.SYNC_URL){setSync("Checks salvos só neste navegador. Configure SYNC_URL para a equipe compartilhar.");return}
+  fetch(CONFIG.SYNC_URL+(CONFIG.SYNC_URL.includes("?")?"&":"?")+"t="+Date.now())
+    .then(r=>r.json()).then(j=>{state=Object.assign({},state,j.state||{});lsSet(LS_STATE,JSON.stringify(state));render();setSync("Sincronizado "+stamp().slice(6))})
+    .catch(()=>setSync("Sem conexão com a planilha. Mostrando checks locais."));
+}
+
+/* ================= CONTROLES ================= */
+document.getElementById("phaseSel").onchange=e=>{filt.phase=e.target.value;render()};
+document.querySelectorAll("#statusSeg button").forEach(b=>b.onclick=()=>{document.querySelectorAll("#statusSeg button").forEach(x=>x.classList.remove("on"));b.classList.add("on");filt.status=b.dataset.v;render()});
+document.getElementById("q").oninput=e=>{filt.q=e.target.value;render()};
+document.getElementById("clearF").onclick=()=>{filt.resp="";filt.phase="";filt.status="all";filt.q="";phaseSel.value="";q.value="";document.querySelectorAll("#statusSeg button").forEach((x,i)=>x.classList.toggle("on",i===0));render()};
+document.getElementById("exp").onclick=()=>{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(state,null,1)],{type:"application/json"}));a.download="progresso-bf-barbara-"+new Date().toISOString().slice(0,10)+".json";a.click()};
+document.getElementById("imp").onclick=()=>impFile.click();
+impFile.onchange=e=>{const f=e.target.files[0];if(!f)return;f.text().then(t=>{try{state=Object.assign({},state,JSON.parse(t));lsSet(LS_STATE,JSON.stringify(state));render()}catch(err){alert("Arquivo inválido.")}})};
+document.getElementById("prt").onclick=()=>window.print();
+document.getElementById("rst").onclick=()=>{if(confirm("Zerar todos os checks deste navegador?")){state={};lsSet(LS_STATE,"{}");render()}};
+
+renderStatic(); render(); pull();
+if(CONFIG.SYNC_URL) setInterval(pull, CONFIG.POLL_SECONDS*1000);
+</script>
+</body>
+</html>
