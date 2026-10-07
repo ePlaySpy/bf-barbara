@@ -13,20 +13,21 @@
   --accent:#b4235a; --accent-soft:#fbe9f0; --ok:#15803d; --ok-soft:#e7f6ec;
   --late:#c2410c; --late-soft:#fff1e6; --today:#1d4ed8; --today-soft:#e8efff;
   --shadow:0 1px 2px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.04);
+  --ph-bg:#fef3c7; --ph-ink:#92400e;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --bg:#121116; --card:#1b1a21; --ink:#f2f0f5; --muted:#9c98a6; --line:#2c2a33;
     --accent:#f0679b; --accent-soft:#3a1a27; --ok:#4ade80; --ok-soft:#14301f;
     --late:#fb923c; --late-soft:#3a2414; --today:#7aa2ff; --today-soft:#1a2440;
-    --shadow:none;
+    --shadow:none; --ph-bg:#3d2f0b; --ph-ink:#fcd34d;
   }
 }
 :root[data-theme="dark"]{
   --bg:#121116; --card:#1b1a21; --ink:#f2f0f5; --muted:#9c98a6; --line:#2c2a33;
   --accent:#f0679b; --accent-soft:#3a1a27; --ok:#4ade80; --ok-soft:#14301f;
   --late:#fb923c; --late-soft:#3a2414; --today:#7aa2ff; --today-soft:#1a2440;
-  --shadow:none;
+  --shadow:none; --ph-bg:#3d2f0b; --ph-ink:#fcd34d;
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
@@ -107,6 +108,29 @@ footer.tools{margin-top:32px;padding-top:16px;border-top:1px solid var(--line);d
 .tabs button.on{color:var(--ink);border-color:var(--accent)}
 .tabs button span{font-size:12px;font-weight:700;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:1px 7px;margin-left:6px}
 [hidden]{display:none!important}
+.pv{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:12px;box-shadow:var(--shadow)}
+.pv.brief{border-left:4px solid var(--accent)}
+.pvh{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.pvh h3{margin:0;font-size:16px;flex:1}
+.pvh .btn{padding:5px 10px;font-size:12px}
+.pvc{font-size:15.5px;line-height:1.65}
+.pvc p{margin:0 0 12px}
+.pvc .pre{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:4px}
+.pvc .hl{font-size:28px;font-weight:800;line-height:1.2;letter-spacing:-.01em}
+.pvc .sub{font-size:18px;color:var(--muted)}
+.pvc .cta{display:inline-block;background:var(--accent);color:#fff;font-weight:700;border-radius:10px;padding:12px 22px}
+.pvc .item{margin-bottom:14px}
+.pvc .item b{display:block}
+.pvc .mu{font-size:13.5px;color:var(--muted)}
+.pvc .tw{overflow-x:auto;margin-bottom:12px}
+.pvc table{width:100%;border-collapse:collapse;font-size:14px;min-width:440px}
+.pvc th,.pvc td{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left}
+.pvc th{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.pvc .n{text-align:right;white-space:nowrap}
+.ph{background:var(--ph-bg);color:var(--ph-ink);border-radius:4px;padding:1px 6px;font-weight:600;font-size:.9em}
+.nota{border-top:1px dashed var(--line);margin-top:4px;padding-top:8px}
+.nota summary{cursor:pointer;font-size:13px;font-weight:600;color:var(--muted)}
+.nota p{font-size:13.5px;color:var(--muted);margin:8px 0 0}
 .defsum{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
 .def{display:grid;grid-template-columns:210px 1fr auto;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:6px;align-items:start}
 .def .k{font-weight:600}
@@ -153,11 +177,206 @@ footer.tools{margin-top:32px;padding-top:16px;border-top:1px solid var(--line);d
 <nav class="tabs">
   <button data-tab="crono" class="on">Cronograma</button>
   <button data-tab="defs">Definições<span id="defPend">0</span></button>
+  <button data-tab="pv">PV</button>
 </nav>
 
 <div id="viewDefs" hidden>
   <div class="defsum" id="defSum"></div>
   <div id="defList"></div>
+</div>
+
+<div id="viewPV" hidden>
+
+<section class="pv brief">
+  <div class="pvh"><h3>Brief estratégico</h3></div>
+  <div class="pvc">
+    <p><b>Estado de consciência:</b> 2, consciente do produto. Quem chega à página veio da live, da lista ou do manifesto. Já conhece a Bárbara e espera a oferta.</p>
+    <p><b>Sofisticação:</b> estágio 5. A Black Friday está saturada de claims. Não vence quem grita mais alto. Vence quem gera identificação e prova.</p>
+    <p><b>Big idea:</b> twist. A Black Friday que não grita: a primeira em 7 anos, com a conta aberta.</p>
+    <p><b>Mecanismo:</b> a ordem da coleção. Falar, soar, aparecer, posicionar. Ninguém precisa fazer nove cursos de uma vez. Precisa fazer na ordem.</p>
+    <p><b>Crenças a destruir:</b> veículo (“toda Black Friday é empurrão ou pegadinha”), interna (“nove cursos é coisa demais para mim”), externa (“comunicação é dom, não treino”).</p>
+    <p><b>Regras:</b> voz da Bárbara em primeira pessoa. Preço, entregáveis e prazo ditos com clareza. Âncora sempre ao lado do preço avulso vigente. Nenhuma promessa de que a oferta nunca volta.</p>
+    <p><b>Legenda:</b> <span class="ph">em amarelo</span> = depende de uma definição em aberto na aba Definições.</p>
+  </div>
+</section>
+
+<section class="pv">
+  <div class="pvh"><h3>1. Topo</h3><span class="st par">Depende de definição</span><button class="btn cp">Copiar</button></div>
+  <div class="pvc">
+    <p class="pre">Black Friday · A Primeira Vez · by Bárbara Torres</p>
+    <p class="hl">Em 7 anos, eu nunca fiz black friday.<br>Essa é a primeira vez.</p>
+    <p class="sub">E eu não vim gritar. Vim abrir a conta.</p>
+    <p>A coleção completa com os meus 9 principais treinamentos, pelo valor de um curso.</p>
+    <p>R$ 997 à vista ou 12x de <span class="ph">valor da parcela</span>.<br>Aberta até sexta, 27/11, às 23:59.</p>
+    <p><span class="cta">Quero a coleção completa</span></p>
+  </div>
+  <details class="nota"><summary>Nota do copywriter</summary><p>Lead de oferta com história. O público está no estado 2, então o preço aparece logo no topo, como o planejamento pede a partir de 22/11. A frase-núcleo carrega a big idea. “Vim abrir a conta” troca o grito por prova e anuncia o que a página vai entregar.</p></details>
+</section>
+
+<section class="pv">
+  <div class="pvh"><h3>2. Abertura</h3><span class="st ok">Rascunho</span><button class="btn cp">Copiar</button></div>
+  <div class="pvc">
+    <p>Há sete anos eu ensino pessoas a se comunicar e se posicionar no digital.</p>
+    <p>Em todos esses novembros, eu fiquei de fora.</p>
+    <p>Não por falta de vontade.<br>Por incômodo.</p>
+    <p>Os mesmos avisos. A maior oferta da história. Só hoje. Últimas vagas.<br>Gente comprando no empurrão, e não pela transformação.</p>
+    <p>Quando todo mundo usa as mesmas palavras, ninguém é ouvido.<br>E eu passo a vida ensinando o contrário: como ser ouvida.</p>
+    <p>Então este ano eu entrei na festa.<br>Do único jeito que eu sei.<br>Sem mentir. Sem inflar. Sem gritar.</p>
+    <p>Nesta página você vê tudo o que está na coleção.<br>Quanto cada parte vale.<br>Quanto cada uma custa avulsa hoje.<br>E por que eu escolhi este preço.</p>
+    <p>A conta está aberta.<br>Você decide.</p>
+  </div>
+  <details class="nota"><summary>Nota do copywriter</summary><p>Retoma o manifesto para quem chega pela live, sem repetir o texto inteiro. Cria um yes-set com quem está cansado de Black Friday. Transforma “não gritar” numa promessa verificável: a conta. Em sofisticação 5, identificação vale mais que claim.</p></details>
+</section>
+
+<section class="pv">
+  <div class="pvh"><h3>3. Para quem é</h3><span class="st ok">Rascunho</span><button class="btn cp">Copiar</button></div>
+  <div class="pvc">
+    <p><b>Esta coleção é para você se:</b></p>
+    <p>Você sabe o que quer dizer, mas trava na hora de falar.<br>
+    Você fala bem com os amigos e some quando liga a câmera.<br>
+    Você grava, regrava e não posta.<br>
+    Você tem assunto, mas falta ideia toda semana.<br>
+    Você já aparece, mas as pessoas ainda não lembram do que você faz.<br>
+    Você quer se posicionar no digital sem virar alguém que você não é.</p>
+  </div>
+  <details class="nota"><summary>Nota do copywriter</summary><p>Cada linha espelha uma etapa da coleção, na ordem: falar, soar, aparecer, posicionar. O leitor se reconhece numa dor e já enxerga onde ela se resolve. Linguagem neutra em gênero, porque o público é misto.</p></details>
+</section>
+
+<section class="pv">
+  <div class="pvh"><h3>4. A ordem da coleção</h3><span class="st par">Depende de definição</span><button class="btn cp">Copiar</button></div>
+  <div class="pvc">
+    <p>A coleção segue a ordem em que a comunicação acontece.</p>
+    <div class="item"><b>1. Falar</b>Organizar a ideia e sustentar o raciocínio, mesmo sob pressão.<br><span class="mu">FALA · Escola de Oradores · Trilogia da Oratória · Agente IA de expressão</span></div>
+    <div class="item"><b>2. Soar</b>Treinar o instrumento: voz, dicção e entonação.<br><span class="mu">Comunicação e Voz</span></div>
+    <div class="item"><b>3. Aparecer</b>O corpo fala antes da palavra. E o conteúdo precisa existir toda semana.<br><span class="mu">Imagem, Presença e Comunicação Visual · Temas & Roteiros · App Anatomia dos Virais</span></div>
+    <div class="item"><b>4. Posicionar</b>Transformar presença em autoridade.<br><span class="mu">COMUNICANDO</span></div>
+    <p>Você não precisa fazer tudo de uma vez.<br>Precisa fazer na ordem.</p>
+  </div>
+  <details class="nota"><summary>Nota do copywriter</summary><p>Este é o mecanismo da página. Ele derruba a crença interna “nove cursos é coisa demais”: o leitor não compra volume, compra um caminho. A distribuição dos itens nas quatro etapas é uma proposta minha. Validar com a Bárbara, principalmente o Agente IA e a Trilogia.</p></details>
+</section>
+
+<section class="pv">
+  <div class="pvh"><h3>5. O que vem na coleção</h3><span class="st pen">Bloqueado: entregáveis</span><button class="btn cp">Copiar</button></div>
+  <div class="pvc">
+    <div class="item"><b>1. FALA · 27 aulas</b>A base de tudo. O curso mais completo de oratória que eu já gravei.<br><span class="mu">Valor de referência: R$ 1.497</span></div>
+    <div class="item"><b>2. Escola de Oradores</b>O Código da Autoridade, o antibranco sob pressão e Aristóteles na prática: Logos, Ethos e Pathos. Para defender ideias e conduzir conversas.<br><span class="mu">Valor de referência: R$ 997</span></div>
+    <div class="item"><b>3. Comunicação e Voz, com a fonoaudióloga Yula</b>Mais de 25 anos de fonoaudiologia num curso só. Dicção, entonação e exercícios, do básico ao avançado.<br><span class="mu">Valor de referência: R$ 997</span></div>
+    <div class="item"><b>4. Imagem, Presença e Comunicação Visual</b>O que o seu corpo diz antes da primeira palavra.<br><span class="mu">Valor de referência: R$ 997</span></div>
+    <div class="item"><b>5. Temas & Roteiros</b>Uma ideia vira 15 conteúdos. Planejamento de 30 dias, estruturas para reels, stories, carrosséis e vídeos longos, workshop gravado e ao vivo, e-book de fontes. Acesso vitalício.<br><span class="mu">Valor de referência: R$ 997</span></div>
+    <div class="item"><b>6. App Anatomia dos Virais · 12 meses</b>Pesquisa de temas em alta, acelerador de roteiros com IA, estrutura de gancho, desenvolvimento e fechamento, calendário editorial e teleprompter. Tudo num lugar só.<br><span class="mu">Valor de referência: R$ 997</span></div>
+    <div class="item"><b>7. Agente IA de expressão</b>Uma IA treinada no meu método para você praticar clareza, presença e autenticidade.<br><span class="mu">Valor de referência: R$ 997</span></div>
+    <div class="item"><b>8. COMUNICANDO</b>O topo da coleção. Posicionamento digital, campanhas, branding, estratégia de base e comunidade. É como eu penso.<br><span class="mu">Valor de referência: R$ 1.997</span></div>
+    <div class="item"><b>9. Trilogia da Oratória · 3 e-books</b>Fundamentos da Comunicação de Impacto. Técnicas e Estratégias de Oratória. Oratória Aplicada no Cotidiano e Expansão de Influência.<br><span class="mu">Valor de referência: R$ 291</span></div>
+  </div>
+  <details class="nota"><summary>Nota do copywriter</summary><p>Cada item abre pelo benefício e fecha pelo valor de referência, para preparar a conta da seção seguinte. Os nomes seguem o planejamento. A seção fica bloqueada enquanto “Entregáveis e âncoras” estiver pendente em Definições.</p></details>
+</section>
+
+<section class="pv">
+  <div class="pvh"><h3>6. A conta aberta</h3><span class="st par">Depende de definição</span><button class="btn cp">Copiar</button></div>
+  <div class="pvc">
+    <p>Eu prometi não gritar.<br>Então vou mostrar a conta.</p>
+    <div class="tw"><table>
+      <tr><th>Item</th><th class="n">Valor de referência</th><th class="n">Preço avulso hoje</th></tr>
+      <tr><td>FALA</td><td class="n">R$ 1.497</td><td class="n"><span class="ph">confirmar</span></td></tr>
+      <tr><td>Escola de Oradores</td><td class="n">R$ 997</td><td class="n">R$ 297</td></tr>
+      <tr><td>Comunicação e Voz</td><td class="n">R$ 997</td><td class="n"><span class="ph">confirmar</span></td></tr>
+      <tr><td>Imagem, Presença e Comunicação Visual</td><td class="n">R$ 997</td><td class="n"><span class="ph">confirmar</span></td></tr>
+      <tr><td>Temas & Roteiros</td><td class="n">R$ 997</td><td class="n">R$ 297</td></tr>
+      <tr><td>App Anatomia dos Virais</td><td class="n">R$ 997</td><td class="n"><span class="ph">confirmar</span></td></tr>
+      <tr><td>Agente IA de expressão</td><td class="n">R$ 997</td><td class="n">Não lançado (previsão R$ 697)</td></tr>
+      <tr><td>COMUNICANDO</td><td class="n">R$ 1.997</td><td class="n"><span class="ph">confirmar</span></td></tr>
+      <tr><td>Trilogia da Oratória</td><td class="n">R$ 291</td><td class="n">R$ 291</td></tr>
+      <tr><td><b>Soma</b></td><td class="n"><b>R$ 9.767</b></td><td class="n"><span class="ph">somar</span></td></tr>
+    </table></div>
+    <p>R$ 9.767 é a soma dos valores de referência.<br>Não é a soma do que eu cobro hoje na minha loja.<br>Alguns itens custam menos avulsos, e a tabela mostra quais.</p>
+    <p>Só três deles já somam R$ 885: Temas & Roteiros, Escola de Oradores e a Trilogia.<br>E você ainda não chegou na metade da coleção.</p>
+    <p><b>Na Black Friday A Primeira Vez, os nove saem por R$ 997.</b><br>Pelo valor de um curso, você leva a coleção inteira.</p>
+  </div>
+  <details class="nota"><summary>Nota do copywriter</summary><p>Esta seção é a prova da big idea. A coluna de preço avulso vigente protege a campanha juridicamente e sustenta o discurso de honestidade. O número exato, R$ 9.767, convence mais que “mais de 10 mil”. Faltam os preços avulsos de seis itens: pedir à operação. A frase “pelo valor de um curso” ainda está como proposta em Definições.</p></details>
+</section>
+
+<section class="pv">
+  <div class="pvh"><h3>7. Os lotes da estreia</h3><span class="st par">Depende de definição</span><button class="btn cp">Copiar</button></div>
+  <div class="pvc">
+    <p>Toda estreia tem plateia, balcão e galeria.<br>A minha também.</p>
+    <div class="item"><b>Lote Plateia</b>As primeiras 100 pessoas. Quem chega primeiro senta mais perto e leva <span class="ph">brinde de estreia</span>.<br><span class="mu"><span class="ph">contador de vagas na página</span></span></div>
+    <div class="item"><b>Lote Balcão</b>Até terça, 24/11, às 23:59. A coleção completa e <span class="ph">bônus do Balcão</span>.</div>
+    <div class="item"><b>Lote Galeria</b>De quarta, 25/11, a sexta, 27/11. A coleção completa, sem extras.</div>
+    <p>O preço da coleção é o mesmo nos três lotes.<br>O que muda é o que vem junto.</p>
+    <p>A condição encerra na sexta, 27/11, às 23:59.</p>
+  </div>
+  <details class="nota"><summary>Nota do copywriter</summary><p>Urgência real, contada como história e não como timer. A metáfora do teatro conversa com “estreia”. Confirmar duas regras antes de publicar: o preço não muda entre lotes, e o que acontece se o Plateia não chegar a 100 até 24/11.</p></details>
+</section>
+
+<section class="pv">
+  <div class="pvh"><h3>8. Prova</h3><span class="st pen">Bloqueado: depoimentos</span><button class="btn cp">Copiar</button></div>
+  <div class="pvc">
+    <p>Quem já passou pelos meus treinamentos:</p>
+    <p><span class="ph">3 a 6 depoimentos verificáveis: nome, @, situação antes, resultado concreto, qual treinamento usou</span></p>
+    <p><span class="ph">números de autoridade: alunos formados, episódios do Comunicando.VOZ, anos de mercado</span></p>
+  </div>
+  <details class="nota"><summary>Nota do copywriter</summary><p>Ideal: um depoimento por etapa (falar, soar, aparecer, posicionar), para provar o mecanismo e não só o curso. Números específicos convencem mais que redondos. O banco de depoimentos fecha em 16/10.</p></details>
+</section>
+
+<section class="pv">
+  <div class="pvh"><h3>9. Para quem não é</h3><span class="st ok">Rascunho</span><button class="btn cp">Copiar</button></div>
+  <div class="pvc">
+    <p><b>Esta coleção não é para você se:</b></p>
+    <p>Você procura uma fórmula para viralizar em uma semana.<br>
+    Você quer aprender a falar como outra pessoa.<br>
+    Você vai comprar e não vai abrir. Comprar não é praticar.<br>
+    Você precisa de acompanhamento individual. Para isso existem o Ciclo 90 e o Vértice.</p>
+  </div>
+  <details class="nota"><summary>Nota do copywriter</summary><p>Qualificação honesta, alinhada ao e-mail de 26/11. Afasta o comprador de impulso, reduz reembolso e reforça a confiança. A última linha encaminha o lead de alto ticket para o pipeline de dezembro.</p></details>
+</section>
+
+<section class="pv">
+  <div class="pvh"><h3>10. Garantia</h3><span class="st pen">Bloqueado: garantia</span><button class="btn cp">Copiar</button></div>
+  <div class="pvc">
+    <p><b>30 dias para entrar, assistir e praticar.</b></p>
+    <p><span class="ph">condições dos 7 dias e dos 21 dias</span></p>
+    <p><span class="ph">o que acontece com o acesso no reembolso</span></p>
+  </div>
+  <details class="nota"><summary>Nota do copywriter</summary><p>Garantia com regra clara aumenta conversão e, em geral, reduz reembolso. A copy só pode ser fechada quando a operação validar por escrito as condições.</p></details>
+</section>
+
+<section class="pv">
+  <div class="pvh"><h3>11. Perguntas frequentes</h3><span class="st par">Depende de definição</span><button class="btn cp">Copiar</button></div>
+  <div class="pvc">
+    <p><b>Até quando posso comprar?</b><br>Até sexta, 27/11, às 23:59. Depois disso, a condição encerra.</p>
+    <p><b>Quando recebo o acesso?</b><br>Logo após a confirmação do pagamento, no e-mail que você cadastrar.</p>
+    <p><b>Por quanto tempo tenho acesso?</b><br>Temas & Roteiros é vitalício. O app Anatomia dos Virais vale por 12 meses. <span class="ph">prazo de acesso dos demais itens</span></p>
+    <p><b>Posso parcelar?</b><br>Sim. Em 12x de <span class="ph">valor da parcela</span>.</p>
+    <p><b>Preciso fazer tudo de uma vez?</b><br>Não. Siga a ordem: falar, soar, aparecer, posicionar. Uma etapa de cada vez.</p>
+    <p><b>Eu já tenho um dos cursos. Vale a pena?</b><br>Faça a conta. Some o preço avulso dos itens que você ainda não tem e compare com R$ 997. A tabela está nesta página.</p>
+    <p><b>Essa condição volta depois?</b><br>Ela vale só nesta semana. Eu não faço promessa sobre o futuro, porque prometi não inflar nada nesta página.</p>
+    <p><b>Tem garantia?</b><br><span class="ph">garantia de 30 dias, 7 + 21</span></p>
+  </div>
+  <details class="nota"><summary>Nota do copywriter</summary><p>As respostas seguem a regra de não prometer que a oferta nunca volta. A pergunta “já tenho um curso” transforma uma objeção comum em convite para a conta aberta.</p></details>
+</section>
+
+<section class="pv">
+  <div class="pvh"><h3>12. Fechamento</h3><span class="st par">Depende de definição</span><button class="btn cp">Copiar</button></div>
+  <div class="pvc">
+    <p>Você leu a conta inteira.</p>
+    <p>Nove treinamentos.<br>R$ 9.767 em valor de referência.<br>R$ 997 nesta semana.</p>
+    <p>Sem contador. Sem pegadinha.<br>Tem semana. Vai até sexta, 27/11, às 23:59.</p>
+    <p><span class="cta">Quero a coleção completa</span><br><span class="mu">R$ 997 à vista ou 12x de <span class="ph">valor da parcela</span></span></p>
+    <p><b>P.S.</b> O Lote Plateia tem 100 lugares. Quando eles acabarem, o <span class="ph">brinde de estreia</span> sai de cena.</p>
+    <p><b>P.S. 2</b> Esta é a minha primeira Black Friday. E primeira vez só acontece uma vez.</p>
+  </div>
+  <details class="nota"><summary>Nota do copywriter</summary><p>Recapitula o stack antes do preço, retoma a urgência real (prazo e lote) e fecha com dois P.S.: um de escassez verdadeira e um de identidade. O segundo fala da estreia, não da oferta, e por isso respeita a regra de não prometer exclusividade.</p></details>
+</section>
+
+<section class="pv">
+  <div class="pvh"><h3>13. Checkout</h3><span class="st pen">Bloqueado: bump e upsell</span><button class="btn cp">Copiar</button></div>
+  <div class="pvc">
+    <p><b>Order bump</b><br><span class="ph">+12 meses do app Anatomia dos Virais por R$ 97, se aprovado</span></p>
+    <p><b>Upsell</b><br><span class="ph">revisão de roteiros (30 vagas) ou mentoria coletiva, se aprovado</span></p>
+  </div>
+  <details class="nota"><summary>Nota do copywriter</summary><p>Escrevo as duas copies assim que a oferta congelar em 13/10.</p></details>
+</section>
+
 </div>
 
 <div id="viewCrono">
@@ -293,7 +512,7 @@ const TASKS = [
 {id:"t026",f:3,d:"10-20",r:["des","bar"],t:"Key visual da campanha “A Primeira Vez”",x:"Paleta, tipografia e assinatura “by Bárbara Torres”. Base de páginas, thumbs e criativos."},
 {id:"t027",f:3,d:"10-20",r:["cop"],t:"Copy da página de captura da lista da estreia"},
 {id:"t028",f:3,d:"10-20",r:["cop"],k:"s",t:"Copy da mensagem de boas-vindas da lista (e-mail e WhatsApp)"},
-{id:"t029",f:3,d:"10-22",r:["cop"],t:"Copy da página de vendas",x:"Stack na ordem falar, soar, aparecer, posicionar. Conta de R$ 9.767 com âncora x avulso vigente. Lotes, garantia, FAQ e para quem não é."},
+{id:"t029",f:3,d:"10-22",r:["cop"],t:"Copy da página de vendas",x:"Rascunho em andamento na aba PV. Stack na ordem falar, soar, aparecer, posicionar. Conta de R$ 9.767 com âncora x avulso vigente. Lotes, garantia, FAQ e para quem não é."},
 {id:"t030",f:3,d:"10-22",r:["cop"],t:"Copy dos anúncios por fase",x:"Descoberta, captação, antecipação e vendas. Na venda, um ângulo por capítulo do dia."},
 {id:"t031",f:3,d:"10-22",r:["edi"],t:"Editar o manifesto completo (Instagram e YouTube)"},
 {id:"t032",f:3,d:"10-23",r:["edi"],t:"Editar episódio teaser e episódio de revelação do podcast"},
@@ -491,6 +710,13 @@ document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{
   document.querySelectorAll(".tabs button").forEach(x=>x.classList.toggle("on",x===b));
   document.getElementById("viewCrono").hidden=b.dataset.tab!=="crono";
   document.getElementById("viewDefs").hidden=b.dataset.tab!=="defs";
+  document.getElementById("viewPV").hidden=b.dataset.tab!=="pv";
+});
+
+document.querySelectorAll(".pv .cp").forEach(b=>b.onclick=()=>{
+  const t=b.closest(".pv").querySelector(".pvc").innerText;
+  const done=()=>{b.textContent="Copiado";setTimeout(()=>b.textContent="Copiar",1500)};
+  if(navigator.clipboard) navigator.clipboard.writeText(t).then(done).catch(()=>{});
 });
 
 /* ================= ESTADO ================= */
