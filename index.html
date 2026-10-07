@@ -116,6 +116,8 @@ footer.tools{margin-top:32px;padding-top:16px;border-top:1px solid var(--line);d
 .st.ok{background:var(--ok-soft);color:var(--ok)}
 .st.par{background:var(--late-soft);color:var(--late)}
 .st.pen{background:var(--accent-soft);color:var(--accent)}
+.st.des{background:var(--line);color:var(--muted)}
+.def .v,.def .n{white-space:pre-line}
 @media (max-width:640px){
   h1{font-size:24px}
   .task{grid-template-columns:24px 1fr}
@@ -403,31 +405,76 @@ const TASKS = [
 /* ================= DEFINIÇÕES =================
    s: ok (definido) | par (parcial) | pen (pendente) | t: tarefa vinculada */
 const DEFS = [
+  /* NARRATIVA E TOM */
+  {c:"Narrativa e tom", k:"Big idea", v:"Black Friday “A Primeira Vez”, by Bárbara Torres", s:"ok", n:"A primeira Black Friday dela em sete anos. Para o público: condição aberta de 22/11 a 27/11."},
+  {c:"Narrativa e tom", k:"Frase-núcleo", v:"“Em 7 anos, eu nunca fiz black friday. Essa é a primeira vez. E eu não vim gritar.”", s:"ok", n:"Opção 2 escolhida.", t:"t010"},
+  {c:"Narrativa e tom", k:"Premissa", v:"A Black Friday não morreu de desconto. Morreu de homogeneidade.", s:"ok", n:"Quando todo mundo fala junto, ninguém é ouvido. E é isso que a Bárbara ensina a resolver."},
+  {c:"Narrativa e tom", k:"Tom de voz", v:"Primeira pessoa, reflexão, imagens concretas, espaço para pausas", s:"ok", n:"A partir de 22/11 a voz continua, mas preço, entregáveis e prazo são ditos com clareza."},
+  {c:"Narrativa e tom", k:"Referência", v:"Episódio “Não minta para se adequar”", s:"ok", n:"Base da escolha de entrar na Black Friday sem soar como o mercado."},
+  {c:"Narrativa e tom", k:"Títulos das peças", v:"“A oferta que não grita”\n“O silêncio no meio do barulho”", s:"par", n:"Direções criativas no estilo dos episódios do podcast. Ainda não aprovados."},
+
+  /* OFERTA */
   {c:"Oferta", k:"Nome do combo", v:"A Primeira Vez: a coleção completa", s:"par", n:"Proposto no planejamento. Falta confirmação final.", t:"t020"},
   {c:"Oferta", k:"Preço à vista", v:"R$ 997", s:"ok"},
   {c:"Oferta", k:"Parcelamento", v:"12x", s:"par", n:"Falta o valor exato da parcela (com ou sem juros).", t:"t003"},
-  {c:"Oferta", k:"Valor âncora", v:"R$ 9.767 (soma dos 9 entregáveis)", s:"ok", n:"Mostrar a diferença entre âncora e preço avulso vigente.", t:"t011"},
-  {c:"Oferta", k:"Entregáveis", v:"9 itens, stack fechado", s:"ok", n:"FALA, Escola de Oradores, Comunicação e Voz, Imagem e Presença, Temas & Roteiros, app Anatomia dos Virais (12 meses), Agente IA, COMUNICANDO, Trilogia da Oratória."},
+  {c:"Oferta", k:"Entregáveis e âncoras", v:"1. FALA (27 aulas): R$ 1.497\n2. Escola de Oradores: R$ 997\n3. Comunicação e Voz (com a fono Yula): R$ 997\n4. Imagem, Presença e Comunicação Visual: R$ 997\n5. Temas & Roteiros: R$ 997\n6. App Anatomia dos Virais (12 meses): R$ 997\n7. Agente IA de expressão: R$ 997\n8. COMUNICANDO: R$ 1.997\n9. Trilogia da Oratória (3 e-books): R$ 291", s:"ok", n:"Stack fechado. Não alterar itens nem valores."},
+  {c:"Oferta", k:"Ordem do stack", v:"Falar, soar, aparecer, posicionar", s:"ok", n:"Empilhado por função, em ordem de jornada."},
+  {c:"Oferta", k:"Valor âncora", v:"R$ 9.767", s:"ok", n:"Número exato, sem arredondar para “mais de 10 mil”. A conta aberta é a prova de honestidade.", t:"t011"},
+  {c:"Oferta", k:"Preços avulsos vigentes", v:"Temas & Roteiros: R$ 297\nEscola de Oradores: R$ 297\nAgente IA: previsão de R$ 697", s:"ok", n:"Sempre mostrar a diferença entre âncora e preço avulso. Âncora não é preço atual de venda.", t:"t011"},
+  {c:"Oferta", k:"Frase-âncora da página", v:"“Pelo valor de UM curso, é uma coleção inteira com os meus principais treinamentos.”", s:"par", n:"R$ 997 é o preço avulso de um curso da coleção. Proposta, falta aprovar."},
   {c:"Oferta", k:"Garantia", v:"30 dias (7 + 21)", s:"par", n:"Falta definir o que muda entre os 7 e os 21 dias e o que acontece com o acesso.", t:"t006"},
-  {c:"Oferta", k:"Order bump", v:"+12 meses do app Anatomia dos Virais por R$ 97", s:"pen", n:"Aprovar ou descartar.", t:"t007"},
-  {c:"Oferta", k:"Upsell", v:"Revisão de roteiros (30 vagas) ou mentoria coletiva", s:"pen", n:"Escolher um e confirmar capacidade de entrega.", t:"t008"},
-  {c:"Lotes", k:"Lote Plateia", v:"100 primeiras vendas + brinde", s:"par", n:"Brinde a definir. Regra se não bater 100 até 24/11.", t:"t004"},
-  {c:"Lotes", k:"Lote Balcão", v:"Até 24/11 às 23:59 + bônus", s:"par", n:"Bônus a definir.", t:"t005"},
+  {c:"Oferta", k:"Order bump", v:"+12 meses do app Anatomia dos Virais por R$ 97", s:"pen", n:"Aprovar ou descartar. Depende de viabilidade operacional.", t:"t007"},
+  {c:"Oferta", k:"Upsell", v:"Revisão de roteiros (30 vagas) ou mentoria coletiva de estreia", s:"pen", n:"Escolher um e confirmar capacidade de entrega.", t:"t008"},
+  {c:"Oferta", k:"Downsell", v:"Aula de R$ 37 para não compradores", s:"des", n:"Riscado no planejamento. Fora da campanha."},
+  {c:"Oferta", k:"Fora da Black", v:"FALA, Ciclo 90 e Vértice continuam avulsos", s:"ok"},
+
+  /* LOTES */
+  {c:"Lotes", k:"Lote Plateia", v:"100 primeiras vendas + brinde de estreia", s:"par", n:"Brinde a definir. Regra se não bater 100 até 24/11.", t:"t004"},
+  {c:"Lotes", k:"Lote Balcão", v:"Até 24/11 às 23:59 + bônus", s:"par", n:"Bônus a definir. Precisa ser real e entregável.", t:"t005"},
   {c:"Lotes", k:"Lote Galeria", v:"25 a 27/11, só a coleção", s:"ok"},
-  {c:"Datas e horários", k:"Revelação", v:"10/11", s:"ok", n:"Data fixa."},
+  {c:"Lotes", k:"Lógica dos lotes", v:"Urgência com história, não com timer", s:"ok", n:"A explicação dos lotes vai na página de vendas."},
+
+  /* REGRAS DE COMUNICAÇÃO */
+  {c:"Regras de comunicação", k:"01 a 09/11", v:"Não citar Black Friday", s:"ok", n:"Só pistas de algo que ela vai fazer pela primeira vez."},
+  {c:"Regras de comunicação", k:"Manifesto (10/11)", v:"Revela a decisão e convida para a lista", s:"ok", n:"Não vende o combo. Não revela preço, stack nem checkout."},
+  {c:"Regras de comunicação", k:"17 a 21/11", v:"Antecipar problemas, público e programação", s:"ok", n:"Sem os nove entregáveis, sem preço, sem checkout."},
+  {c:"Regras de comunicação", k:"Antes de 22/11", v:"Nenhuma venda e nenhum link de compra", s:"ok"},
+  {c:"Regras de comunicação", k:"Nunca mais?", v:"Não afirmar que nunca haverá outra oferta", s:"par", n:"Atenção: o roteiro da matemática fecha com “não volta, porque não tem segunda primeira vez”. Ajustar essa frase ou validar que ela não promete exclusividade.", t:"t018"},
+  {c:"Regras de comunicação", k:"E-mail e WhatsApp", v:"Somente contatos com permissão", s:"ok"},
+
+  /* DATAS E HORÁRIOS */
+  {c:"Datas e horários", k:"Datas fixas", v:"10/11 revelação\n22/11 abertura de vendas", s:"ok", n:"Se algo atrasar, corta-se escopo, nunca as datas."},
   {c:"Datas e horários", k:"Live de estreia", v:"Dom 22/11 às 20:00", s:"ok"},
   {c:"Datas e horários", k:"Abertura do carrinho", v:"22:00 ou durante a live", s:"pen", n:"Recomendação: abrir durante a live, após a revelação.", t:"t090"},
   {c:"Datas e horários", k:"Live de fechamento", v:"Sex 27/11 às 20:00", s:"ok", n:"Com os dez segundos de silêncio."},
   {c:"Datas e horários", k:"Encerramento", v:"Sex 27/11 às 23:59", s:"ok", n:"Sem prorrogação."},
-  {c:"Mídia", k:"Verba", v:"R$ 100 mil base, R$ 150 mil escala, R$ 200 mil teto", s:"ok", n:"Escala só com dados dos checkpoints.", t:"t048"},
+
+  /* PROGRAMAÇÃO DA SEMANA */
+  {c:"Programação da semana", k:"Capítulos por dia", v:"Sex 20/11: a dois dias da estreia\nSáb 21/11: a véspera\nDom 22/11: a estreia\nSeg 23/11: a conta aberta\nTer 24/11: a prova\nQua 25/11: a arquitetura\nQui 26/11: a escolha\nSex 27/11: o silêncio", s:"ok", n:"Cada dia tem um papel próprio. Sem prolongar a venda."},
+  {c:"Programação da semana", k:"Sequência de e-mail e WhatsApp", v:"20/11: “Faltam dois dias”\n21/11: “Amanhã, pela primeira vez”\n22/11: “A Primeira Vez começou”\n23/11: “A conta aberta”\n25/11: “Como usar a coleção”\n26/11: “Para quem não é”\n27/11: “O silêncio”", s:"ok", n:"Sugestão pendente: aviso do fim do Lote Balcão em 24/11.", t:"t099"},
+
+  /* CANAIS E PEÇAS */
+  {c:"Canais e peças", k:"Peças do manifesto", v:"Manifesto completo: Instagram, YouTube e podcast em 10/11\nReel de 30 a 45 s: teasers e anúncios\nCortes de 10 a 20 s: testes de abertura em ads\nConvite derivado: ads de captação de 10 a 21/11", s:"ok"},
+  {c:"Canais e peças", k:"Reels, TikTok e Shorts", v:"Teasers até 09/11, cortes do manifesto após 10/11, peças da oferta após 22/11", s:"ok"},
+  {c:"Canais e peças", k:"YouTube", v:"Versões longas: manifesto, matemática e lives", s:"ok"},
+  {c:"Canais e peças", k:"Podcast Comunicando.VOZ", v:"Teasers antes de 10/11 e episódio de revelação no dia 10", s:"ok"},
+  {c:"Canais e peças", k:"Comunidade", v:"FALA e Comunicando como plateia interna na semana de vendas", s:"ok"},
+  {c:"Canais e peças", k:"Parceiros e afiliados", v:"Entram ou não na operação", s:"pen", t:"t016"},
+
+  /* MÍDIA */
+  {c:"Mídia", k:"Verba", v:"R$ 100 mil base\nR$ 150 mil escala\nR$ 200 mil teto", s:"ok", n:"O teto não é gasto automático. Escala só com dados dos checkpoints.", t:"t048"},
   {c:"Mídia", k:"Distribuição", v:"10% descoberta, 45% captação, 5% antecipação, 30% vendas, 10% reserva", s:"ok"},
-  {c:"Comunicação", k:"Frase-núcleo", v:"“Em 7 anos, eu nunca fiz black friday. Essa é a primeira vez. E eu não vim gritar.”", s:"ok", n:"Opção 2 escolhida.", t:"t010"},
-  {c:"Comunicação", k:"Parceiros e afiliados", v:"Entram ou não na operação", s:"pen", t:"t016"}
+  {c:"Mídia", k:"Cenário R$ 100 mil", v:"Descoberta (01 a 10/11): R$ 10 mil\nCaptação (10 a 21/11): R$ 45 mil\nAntecipação (17 a 21/11): R$ 5 mil\nVendas (22 a 27/11): R$ 30 mil\nReserva: R$ 10 mil", s:"ok"},
+  {c:"Mídia", k:"Cenário R$ 150 mil", v:"Descoberta: R$ 15 mil\nCaptação: R$ 67,5 mil\nAntecipação: R$ 7,5 mil\nVendas: R$ 45 mil\nReserva: R$ 15 mil", s:"ok"},
+  {c:"Mídia", k:"Referência de custo", v:"CPL do CSV de 2025", s:"ok", n:"Referência de teto. Sem extrapolar como meta.", t:"t022"},
+
+  /* PÓS-CAMPANHA */
+  {c:"Pós-campanha", k:"Compradores", v:"Convite para diagnóstico do Ciclo 90 em dezembro", s:"ok", n:"Aluno de R$ 997 é lead quente para alto ticket.", t:"t118"}
 ];
-const ST = {ok:"Definido", par:"Parcial", pen:"Pendente"};
+const ST = {ok:"Definido", par:"Parcial", pen:"Pendente", des:"Descartado"};
 
 function renderDefs(){
-  const cnt={ok:0,par:0,pen:0}; DEFS.forEach(d=>cnt[d.s]++);
+  const cnt={ok:0,par:0,pen:0,des:0}; DEFS.forEach(d=>cnt[d.s]++);
   document.getElementById("defPend").textContent=cnt.par+cnt.pen;
   document.getElementById("defSum").innerHTML=Object.keys(ST).map(s=>`<span class="st ${s}">${cnt[s]} ${ST[s]}</span>`).join("");
   let html="", cat="";
