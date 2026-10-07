@@ -91,6 +91,10 @@ input[type=search]{flex:1;min-width:160px}
 .tag.l{background:var(--late);color:#fff}
 .tag.h{background:var(--today);color:#fff}
 .chk{font-size:12px;color:var(--ok)}
+.doc{margin-top:8px;font-size:14px}
+.doc summary{cursor:pointer;font-weight:600;color:var(--accent);font-size:13px}
+.doc .db{margin-top:8px;padding:12px 14px;border-left:3px solid var(--accent);background:var(--bg);border-radius:0 8px 8px 0;white-space:pre-wrap;line-height:1.6}
+.doc del{color:var(--muted)}
 .empty{text-align:center;color:var(--muted);padding:40px 0}
 .legend{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:4px 0 14px}
 footer.tools{margin-top:32px;padding-top:16px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px;align-items:center}
@@ -265,7 +269,7 @@ const TASKS = [
 {id:"t009",f:1,d:"10-10",r:["soc","vit"],t:"Pedir depoimentos verificáveis de alunos com autorização de uso",x:"Prazo de recebimento: 16/10. Base do dia da prova (24/11)."},
 {id:"t010",f:1,d:"10-11",r:["bar"],t:"Escolher a frase-núcleo da campanha",x:"Definida: “Em 7 anos, eu nunca fiz black friday. Essa é a primeira vez. E eu não vim gritar.”"},
 {id:"t011",f:1,d:"10-11",r:["vit"],t:"Validar a tabela âncora x preço avulso vigente",x:"Documentar a fonte de cada âncora. Temas & Roteiros e Escola de Oradores custam R$ 297 avulso. Agente IA tinha previsão de R$ 697. Página e lives mostram essa diferença."},
-{id:"t012",f:1,d:"10-11",r:["cop"],t:"Roteiro final do manifesto (2 a 4 min)",x:"Base no planejamento. Decidir o destino do parágrafo riscado sobre abrir as contas."},
+{id:"t012",f:1,d:"10-11",r:["bar"],t:"Roteiro final do manifesto (2 a 4 min)",x:"Partir do esboço abaixo. Decidir o destino do parágrafo riscado sobre abrir as contas.",doc:{n:"Ver esboço do manifesto",b:"Eu tenho uma confissão.\n\nHá sete anos eu ensino pessoas a se comunicar e se posicionar no digital.\nE nesses sete anos, eu nunca fiz uma Black Friday. Este ano, decidi fazer a primeira.\n\nQuando o mercado gritava, eu ficava de fora. Agora quero participar sem repetir o que sempre me incomodou nessa época.\n\nAí eu passei os últimos novembros observando. Os mesmos avisos. A maior oferta da história. Só hoje. Últimas vagas. E a mesma plateia do outro lado: gente que comprou no empurrão, e não pela transformação.\n\nVi as mesmas frases se repetirem a cada novembro. Urgência. Escassez. A maior oferta da história. Quando todo mundo tenta soar diferente usando as mesmas palavras, o resultado é o contrário: ninguém é ouvido.\n\nEu passo a vida ensinando exatamente isso: como ser ouvida.\n\nEntão eu tinha duas escolhas. Ficar quieta de novo. Ou entrar na única festa do ano que eu sempre evitei, do único jeito que eu sei: sem mentir, sem inflar, sem gritar.\n\n~~Nas próximas semanas, eu vou mostrar cada conta. O que tem dentro da oferta. Quanto cada coisa vale, e por quê. Você vai ver os números na minha frente, na sua frente.~~\n\nEm sete anos, a primeira vez.\n\nA minha Black Friday não começa com um contador regressivo. Começa com uma pergunta: o que acontece quando quem ensina a falar bem decide, finalmente, falar?"}},
 {id:"t013",f:1,d:"10-11",r:["cop"],t:"Roteiro do episódio de revelação do Comunicando.VOZ"},
 {id:"t014",f:1,d:"10-12",r:["cop"],t:"Roteiros dos teasers de 01, 04 e 07/11 e do episódio teaser do podcast",x:"Pistas de algo feito pela primeira vez, ligadas à trajetória dela. Proibido citar Black Friday."},
 {id:"t015",f:1,d:"10-12",r:["cop"],t:"Roteiros dos reels de continuação (13 e 16/11) e “para quem é” (18 e 19/11)",x:"CTA para a lista. Sem stack, sem preço, sem checkout."},
@@ -520,7 +524,7 @@ function render(){
       if(s==="today") tags.push('<span class="tag h">Hoje</span>');
       const who=t.r.map(r=>`<span class="who"><span class="dot" style="background:${RESP[r].c}"></span>${esc(RESP[r].n)}</span>`).join("");
       const by=st&&st.d?`<span class="chk">✓ ${esc(st.by?(RESP[st.by]?RESP[st.by].n:st.by):"")}${st.at?" em "+esc(st.at):""}</span>`:"";
-      html+=`<div class="task ${s}"><input type="checkbox" data-id="${t.id}"${s==="done"?" checked":""} aria-label="Concluir"><div class="when">${f.d}<small>${f.w}</small></div><div class="body"><div class="tt">${esc(t.t)}</div>${t.x?`<div class="tx">${esc(t.x)}</div>`:""}<div class="meta">${who}${tags.join("")}${by}</div></div></div>`;
+      html+=`<div class="task ${s}"><input type="checkbox" data-id="${t.id}"${s==="done"?" checked":""} aria-label="Concluir"><div class="when">${f.d}<small>${f.w}</small></div><div class="body"><div class="tt">${esc(t.t)}</div>${t.x?`<div class="tx">${esc(t.x)}</div>`:""}${t.doc?`<details class="doc"><summary>${esc(t.doc.n)}</summary><div class="db">${esc(t.doc.b).replace(/~~([\s\S]*?)~~/g,"<del>$1</del>")}</div></details>`:""}<div class="meta">${who}${tags.join("")}${by}</div></div></div>`;
     });
   });
   list.innerHTML=html||'<div class="empty">Nenhuma tarefa com esses filtros.</div>';
