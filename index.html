@@ -71,6 +71,7 @@ input[type=search]{flex:1;min-width:160px}
 .phase{margin:22px 0 8px}
 .phase h2{font-size:18px;margin:0;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
 .phase h2 small{font-size:13px;color:var(--muted);font-weight:500}
+.phase .pa{margin:6px 0 0;font-size:13.5px;color:var(--muted);max-width:760px}
 .phase .pp{font-size:12px;color:var(--muted);margin-left:auto}
 .task{display:grid;grid-template-columns:28px 78px 1fr;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:6px;align-items:start}
 .task.done{opacity:.55}
@@ -243,11 +244,11 @@ const PHASES = [
   {id:2, n:"Gravações", p:"14 a 16/10"},
   {id:3, n:"Produção e montagem", p:"17 a 28/10"},
   {id:4, n:"Revisão e go/no-go", p:"29 a 31/10"},
-  {id:5, n:"Ato I · O sinal", p:"01 a 09/11"},
-  {id:6, n:"Ato II · Revelação e convite", p:"10 a 16/11"},
-  {id:7, n:"Ato III · Expectativa", p:"17 a 21/11"},
-  {id:8, n:"Ato IV · Vendas", p:"22 a 26/11"},
-  {id:9, n:"Ato V · O silêncio", p:"27 e 28/11"},
+  {id:5, n:"Ato I · O sinal", p:"01 a 10/11", a:"Reels, anúncios, podcast e YouTube levantam a tensão de “vou fazer algo pela primeira vez”, com pistas ligadas à trajetória da Bárbara, sem revelar o que será. Em 10/11, o manifesto e um episódio do Comunicando.VOZ anunciam a primeira Black Friday e convidam para a lista."},
+  {id:6, n:"Ato II · O convite", p:"10 a 21/11", a:"Captação de 10 a 21/11 para acompanhar a estreia. Página de captura, convite para a lista e continuação da narrativa."},
+  {id:7, n:"Ato III · A expectativa", p:"17 a 21/11", a:"A captação continua enquanto começa a antecipação da oferta. Mostrar quais problemas a coleção aborda, para quem é e a programação da semana, sem revelar os nove entregáveis nem o preço. Preparar a live de domingo."},
+  {id:8, n:"Ato IV · A estreia e a escolha", p:"22 a 26/11", a:"Abertura no domingo 22/11 com live e revelação da oferta. Nos dias seguintes: a conta, aplicação prática, prova e objeções, sem mudar o stack fechado."},
+  {id:9, n:"Ato V · O silêncio", p:"27/11", a:"Live final no dia da Black Friday. O silêncio como gesto de comunicação, seguido do encerramento real da condição no horário anunciado."},
   {id:10, n:"Pós-campanha", p:"dezembro"}
 ];
 
@@ -409,6 +410,7 @@ const DEFS = [
   {c:"Narrativa e tom", k:"Big idea", v:"Black Friday “A Primeira Vez”, by Bárbara Torres", s:"ok", n:"A primeira Black Friday dela em sete anos. Para o público: condição aberta de 22/11 a 27/11."},
   {c:"Narrativa e tom", k:"Frase-núcleo", v:"“Em 7 anos, eu nunca fiz black friday. Essa é a primeira vez. E eu não vim gritar.”", s:"ok", n:"Opção 2 escolhida.", t:"t010"},
   {c:"Narrativa e tom", k:"Premissa", v:"A Black Friday não morreu de desconto. Morreu de homogeneidade.", s:"ok", n:"Quando todo mundo fala junto, ninguém é ouvido. E é isso que a Bárbara ensina a resolver."},
+  {c:"Narrativa e tom", k:"Arco em 5 atos", v:"O sinal, o convite, a expectativa, a estreia e a escolha, o silêncio", s:"ok", doc:{n:"Ver os 5 atos",b:"Ato I, o sinal (01 a 10/11)\nReels, anúncios, podcast e YouTube levantam a tensão de “vou fazer algo pela primeira vez”, com pistas ligadas à trajetória da Bárbara, sem revelar o que será. Em 10/11, o manifesto e um episódio do Comunicando.VOZ anunciam a primeira Black Friday e convidam para a lista.\n\nAto II, o convite (10 a 21/11)\nCaptação de 10 a 21/11 para acompanhar a estreia. Página de captura, convite para a lista e continuação da narrativa.\n\nAto III, a expectativa (17 a 21/11)\nA captação continua enquanto começa a antecipação da oferta. Mostrar quais problemas a coleção aborda, para quem é e a programação da semana, sem revelar os nove entregáveis nem o preço. Preparar a live de domingo.\n\nAto IV, a estreia e a escolha (22 a 26/11)\nAbertura no domingo 22/11 com live e revelação da oferta. Nos dias seguintes: a conta, aplicação prática, prova e objeções, sem mudar o stack fechado.\n\nAto V, o silêncio (27/11)\nLive final no dia da Black Friday. O silêncio como gesto de comunicação, seguido do encerramento real da condição no horário anunciado."}},
   {c:"Narrativa e tom", k:"Tom de voz", v:"Primeira pessoa, reflexão, imagens concretas, espaço para pausas", s:"ok", n:"A partir de 22/11 a voz continua, mas preço, entregáveis e prazo são ditos com clareza."},
   {c:"Narrativa e tom", k:"Referência", v:"Episódio “Não minta para se adequar”", s:"ok", n:"Base da escolha de entrar na Black Friday sem soar como o mercado."},
   {c:"Narrativa e tom", k:"Títulos das peças", v:"“A oferta que não grita”\n“O silêncio no meio do barulho”", s:"par", n:"Direções criativas no estilo dos episódios do podcast. Ainda não aprovados."},
@@ -560,7 +562,7 @@ function render(){
     }).sort((a,b)=>toDate(a.d)-toDate(b.d));
     if(!ts.length) return;
     const pd=all.filter(t=>status(t)==="done").length;
-    html+=`<section class="phase"><h2>${esc(p.n)} <small>${esc(p.p)}</small><span class="pp">${pd}/${all.length}</span></h2></section>`;
+    html+=`<section class="phase"><h2>${esc(p.n)} <small>${esc(p.p)}</small><span class="pp">${pd}/${all.length}</span></h2>${p.a?`<p class="pa">${esc(p.a)}</p>`:""}</section>`;
     ts.forEach(t=>{
       const s=status(t), f=fmt(t.d), st=state[t.id];
       const tags=[];
