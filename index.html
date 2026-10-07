@@ -97,12 +97,28 @@ footer.tools{margin-top:32px;padding-top:16px;border-top:1px solid var(--line);d
 .btn{font:inherit;font-size:13px;font-weight:600;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:8px 12px;cursor:pointer}
 .btn:hover{border-color:var(--ink)}
 .sync{font-size:12px;color:var(--muted);margin-left:auto}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:16px}
+.tabs button{font:inherit;font-weight:600;font-size:14px;background:none;border:0;border-bottom:2px solid transparent;padding:10px 14px;color:var(--muted);cursor:pointer;margin-bottom:-1px}
+.tabs button.on{color:var(--ink);border-color:var(--accent)}
+.tabs button span{font-size:12px;font-weight:700;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:1px 7px;margin-left:6px}
+[hidden]{display:none!important}
+.defsum{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.def{display:grid;grid-template-columns:210px 1fr auto;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:6px;align-items:start}
+.def .k{font-weight:600}
+.def .v{font-weight:500}
+.def .n{font-size:13px;color:var(--muted);margin-top:2px}
+.def .lk{font-size:12px;color:var(--muted);margin-top:6px}
+.st{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:6px;padding:3px 8px;white-space:nowrap}
+.st.ok{background:var(--ok-soft);color:var(--ok)}
+.st.par{background:var(--late-soft);color:var(--late)}
+.st.pen{background:var(--accent-soft);color:var(--accent)}
 @media (max-width:640px){
   h1{font-size:24px}
   .task{grid-template-columns:24px 1fr}
   .task .when{grid-column:2;display:flex;gap:6px;align-items:baseline}
   .task .body{grid-column:2}
   .kpi{min-width:0;flex:1}
+  .def{grid-template-columns:1fr}
 }
 @media print{
   .toolbar,footer.tools,.people,details.alerts{display:none}
@@ -127,6 +143,17 @@ footer.tools{margin-top:32px;padding-top:16px;border-top:1px solid var(--line);d
   </div>
 </header>
 
+<nav class="tabs">
+  <button data-tab="crono" class="on">Cronograma</button>
+  <button data-tab="defs">Definições<span id="defPend">0</span></button>
+</nav>
+
+<div id="viewDefs" hidden>
+  <div class="defsum" id="defSum"></div>
+  <div id="defList"></div>
+</div>
+
+<div id="viewCrono">
 <div class="dates" id="dates"></div>
 
 <details class="alerts">
@@ -172,6 +199,7 @@ footer.tools{margin-top:32px;padding-top:16px;border-top:1px solid var(--line);d
 </div>
 
 <main id="list"></main>
+</div>
 
 <footer class="tools">
   <button class="btn" id="exp">Exportar progresso</button>
@@ -228,7 +256,7 @@ const TASKS = [
 /* FASE 1 */
 {id:"t001",f:1,d:"10-07",r:["ges"],k:"c",t:"Kickoff: apresentar este cronograma e confirmar quem ocupa cada função",x:"Nomear copywriter, editor, designer, tráfego, tecnologia, social media e suporte."},
 {id:"t002",f:1,d:"10-08",r:["ges"],t:"Criar grupo da operação e rotina de status",x:"Sugestão: status rápido seg, qua e sex até 31/10. Diário a partir de 01/11."},
-{id:"t003",f:1,d:"10-09",r:["bar","vit"],k:"c",t:"Definir parcelamento e preço final de divulgação",x:"R$ 997 à vista. Fechar número de parcelas, com ou sem juros, e como aparece na página."},
+{id:"t003",f:1,d:"10-09",r:["bar","vit"],k:"c",t:"Definir parcelamento e preço final de divulgação",x:"R$ 997 à vista ou em 12x. Falta o valor exato da parcela (com ou sem juros) e como aparece na página."},
 {id:"t004",f:1,d:"10-09",r:["vit"],k:"c",t:"Fechar regras dos lotes Plateia, Balcão e Galeria",x:"Plateia: 100 primeiras vendas, com contador verificável e regra se não bater 100 até 24/11. Balcão: até 24/11 às 23:59. Galeria: 25 a 27/11, só a coleção."},
 {id:"t005",f:1,d:"10-10",r:["bar"],k:"c",t:"Definir brinde do Lote Plateia e bônus do Lote Balcão",x:"Real e entregável. Informar formato e prazo de entrega para Tecnologia."},
 {id:"t006",f:1,d:"10-10",r:["vit","tec"],k:"c",t:"Validar por escrito a garantia de 30 dias (7 + 21)",x:"O que muda entre os 7 e os 21 dias, como o aluno pede e o que acontece com o acesso. Confirmar que a plataforma suporta."},
@@ -368,6 +396,50 @@ const TASKS = [
 {id:"t122",f:10,d:"12-28",r:["vit"],k:"s",t:"Fechar número de reembolsos após o fim da garantia",x:"Garantia de 30 dias das últimas vendas termina em 27/12."}
 ];
 
+/* ================= DEFINIÇÕES =================
+   s: ok (definido) | par (parcial) | pen (pendente) | t: tarefa vinculada */
+const DEFS = [
+  {c:"Oferta", k:"Nome do combo", v:"A Primeira Vez: a coleção completa", s:"par", n:"Proposto no planejamento. Falta confirmação final.", t:"t020"},
+  {c:"Oferta", k:"Preço à vista", v:"R$ 997", s:"ok"},
+  {c:"Oferta", k:"Parcelamento", v:"12x", s:"par", n:"Falta o valor exato da parcela (com ou sem juros).", t:"t003"},
+  {c:"Oferta", k:"Valor âncora", v:"R$ 9.767 (soma dos 9 entregáveis)", s:"ok", n:"Mostrar a diferença entre âncora e preço avulso vigente.", t:"t011"},
+  {c:"Oferta", k:"Entregáveis", v:"9 itens, stack fechado", s:"ok", n:"FALA, Escola de Oradores, Comunicação e Voz, Imagem e Presença, Temas & Roteiros, app Anatomia dos Virais (12 meses), Agente IA, COMUNICANDO, Trilogia da Oratória."},
+  {c:"Oferta", k:"Garantia", v:"30 dias (7 + 21)", s:"par", n:"Falta definir o que muda entre os 7 e os 21 dias e o que acontece com o acesso.", t:"t006"},
+  {c:"Oferta", k:"Order bump", v:"+12 meses do app Anatomia dos Virais por R$ 97", s:"pen", n:"Aprovar ou descartar.", t:"t007"},
+  {c:"Oferta", k:"Upsell", v:"Revisão de roteiros (30 vagas) ou mentoria coletiva", s:"pen", n:"Escolher um e confirmar capacidade de entrega.", t:"t008"},
+  {c:"Lotes", k:"Lote Plateia", v:"100 primeiras vendas + brinde", s:"par", n:"Brinde a definir. Regra se não bater 100 até 24/11.", t:"t004"},
+  {c:"Lotes", k:"Lote Balcão", v:"Até 24/11 às 23:59 + bônus", s:"par", n:"Bônus a definir.", t:"t005"},
+  {c:"Lotes", k:"Lote Galeria", v:"25 a 27/11, só a coleção", s:"ok"},
+  {c:"Datas e horários", k:"Revelação", v:"10/11", s:"ok", n:"Data fixa."},
+  {c:"Datas e horários", k:"Live de estreia", v:"Dom 22/11 às 20:00", s:"ok"},
+  {c:"Datas e horários", k:"Abertura do carrinho", v:"22:00 ou durante a live", s:"pen", n:"Recomendação: abrir durante a live, após a revelação.", t:"t090"},
+  {c:"Datas e horários", k:"Live de fechamento", v:"Sex 27/11 às 20:00", s:"ok", n:"Com os dez segundos de silêncio."},
+  {c:"Datas e horários", k:"Encerramento", v:"Sex 27/11 às 23:59", s:"ok", n:"Sem prorrogação."},
+  {c:"Mídia", k:"Verba", v:"R$ 100 mil base, R$ 150 mil escala, R$ 200 mil teto", s:"ok", n:"Escala só com dados dos checkpoints.", t:"t048"},
+  {c:"Mídia", k:"Distribuição", v:"10% descoberta, 45% captação, 5% antecipação, 30% vendas, 10% reserva", s:"ok"},
+  {c:"Comunicação", k:"Frase-núcleo", v:"Opção 1 ou opção 2", s:"pen", t:"t010"},
+  {c:"Comunicação", k:"Parceiros e afiliados", v:"Entram ou não na operação", s:"pen", t:"t016"}
+];
+const ST = {ok:"Definido", par:"Parcial", pen:"Pendente"};
+
+function renderDefs(){
+  const cnt={ok:0,par:0,pen:0}; DEFS.forEach(d=>cnt[d.s]++);
+  document.getElementById("defPend").textContent=cnt.par+cnt.pen;
+  document.getElementById("defSum").innerHTML=Object.keys(ST).map(s=>`<span class="st ${s}">${cnt[s]} ${ST[s]}</span>`).join("");
+  let html="", cat="";
+  DEFS.forEach(d=>{
+    if(d.c!==cat){cat=d.c;html+=`<section class="phase"><h2>${esc(cat)}</h2></section>`;}
+    const tk=d.t&&TASKS.find(t=>t.id===d.t);
+    html+=`<div class="def"><div class="k">${esc(d.k)}</div><div><div class="v">${esc(d.v)}</div>${d.n?`<div class="n">${esc(d.n)}</div>`:""}${tk?`<div class="lk">Tarefa: ${fmt(tk.d).d} · ${esc(tk.t)}</div>`:""}</div><span class="st ${d.s}">${ST[d.s]}</span></div>`;
+  });
+  document.getElementById("defList").innerHTML=html;
+}
+document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll(".tabs button").forEach(x=>x.classList.toggle("on",x===b));
+  document.getElementById("viewCrono").hidden=b.dataset.tab!=="crono";
+  document.getElementById("viewDefs").hidden=b.dataset.tab!=="defs";
+});
+
 /* ================= ESTADO ================= */
 const LS_STATE = "bf26-bt-state-v1", LS_ME = "bf26-bt-me";
 let state = {};
@@ -485,7 +557,7 @@ impFile.onchange=e=>{const f=e.target.files[0];if(!f)return;f.text().then(t=>{tr
 document.getElementById("prt").onclick=()=>window.print();
 document.getElementById("rst").onclick=()=>{if(confirm("Zerar todos os checks deste navegador?")){state={};lsSet(LS_STATE,"{}");render()}};
 
-renderStatic(); render(); pull();
+renderStatic(); render(); renderDefs(); pull();
 if(CONFIG.SYNC_URL) setInterval(pull, CONFIG.POLL_SECONDS*1000);
 </script>
 </body>
