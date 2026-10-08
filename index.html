@@ -411,15 +411,15 @@ footer.tools{margin-top:32px;padding-top:16px;border-top:1px solid var(--line);d
 <details class="alerts">
   <summary>Pontos de atenção e ajustes feitos no pré-cronograma (9)</summary>
   <ol>
-    <li><b>Entrega de acesso.</b> O pré-cronograma colocava a entrega de acesso de 01 a 05/12. Quem compra em 22/11 precisa entrar na hora. Ajustei: entrega automática e imediata, com 01 a 05/12 como reforço de onboarding.</li>
+    <li><b>Entrega de acesso.</b> O pré-cronograma colocava a entrega de acesso de 01 a 05/12. Quem compra em 22/11 precisa entrar na hora. Ajustei: entrega automática e imediata, confirmada até 10/11.</li>
     <li><b>Carrinho às 22:00, live às 20:00.</b> Duas horas entre a revelação e o carrinho esfriam o pico de atenção. Recomendo abrir o carrinho dentro da live, logo após a revelação da oferta. Decisão da Bárbara e do Vitor. Mantive 22:00 até a decisão.</li>
     <li><b>Ads desligados em 28/11.</b> A condição fecha em 27/11 às 23:59. Anúncio rodando depois disso gera clique sem oferta. Ajustei para desligar às 23:59 do dia 27.</li>
     <li><b>Sem aviso do fim do Lote Balcão.</b> A sequência não tem disparo em 24/11, dia em que o lote vira. Incluí um aviso curto como sugestão, a aprovar.</li>
     <li><b>Lote Plateia por 100 vagas.</b> Precisa de contador verificável e de uma regra para o caso de não vender 100 até 24/11. Sem isso, o lote vira promessa solta.</li>
-    <li><b>Gravações em três blocos.</b> Gravação 1 em 21 e 22/10 (manifesto, teasers e episódios), gravação 2 em 05/11 (reels de continuação e “para quem é”) e gravação 3 em 12/11 (semana de vendas). Cada roteiro fica pronto poucos dias antes da gravação, e as peças de venda só são gravadas com stack e preços confirmados.</li>
+    <li><b>Gravações em três blocos.</b> Gravação 1 em 21/10 (teasers). Gravação 2 em 06/11 (manifesto, podcast ep. 1, reels de continuação e “para quem é”). Gravação 3 em 12/11 (semana de vendas e podcast ep. 2). Ponto de risco: o manifesto sai do roteiro em 05/11 e os cortes precisam da aprovação da Meta até 10/11.</li>
     <li><b>Garantia 7 + 21.</b> Falta definir o que muda entre os 7 e os 21 dias e o que acontece com o acesso no reembolso. Não publicar a página sem isso escrito.</li>
     <li><b>Aprovação de anúncios em novembro.</b> A fila de revisão da Meta cresce na Black Friday. Criativos sobem com 48 a 72 h de antecedência de cada fase.</li>
-    <li><b>Tarefas novas.</b> Incluí itens que faltavam: plano de contingência, link reserva de checkout, FAQ e plantão de suporte, boas-vindas da lista, e-mail de revelação de 10/11 e fechamento da garantia em 27/12. Estão marcados como “Novo”.</li>
+    <li><b>Tarefas novas.</b> Incluí itens que faltavam: plano de contingência, link reserva de checkout, FAQ e plantão de suporte, boas-vindas da lista e e-mail de revelação de 10/11. Estão marcados como “Novo”.</li>
     <li><b>Programação horária.</b> O pré-cronograma cita o documento “[Cronograma] Black Friday Barbara Torres”, que não veio no material. Os horários aqui seguem o pré-cronograma.</li>
   </ol>
 </details>
@@ -485,20 +485,19 @@ const RESP = {
 };
 
 const PHASES = [
-  {id:1, n:"Decisões da oferta", p:"07 a 13/10"},
-  {id:2, n:"Roteiros e gravação 1", p:"14 a 22/10"},
-  {id:3, n:"Produção e montagem", p:"17 a 28/10"},
+  {id:1, n:"Decisões da oferta", p:"07/10 a 10/11"},
+  {id:2, n:"Roteiros e gravação", p:"até 05/11"},
+  {id:3, n:"Produção e montagem", p:"17 a 30/10"},
   {id:4, n:"Revisão e go/no-go", p:"29 a 31/10"},
   {id:5, n:"Ato I · O sinal", p:"01 a 10/11", a:"Reels, anúncios, podcast e YouTube levantam a tensão de “vou fazer algo pela primeira vez”, com pistas ligadas à trajetória da Bárbara, sem revelar o que será. Em 10/11, o manifesto e um episódio do Comunicando.VOZ anunciam a primeira Black Friday e convidam para a lista."},
   {id:6, n:"Ato II · O convite", p:"10 a 21/11", a:"Captação de 10 a 21/11 para acompanhar a estreia. Página de captura, convite para a lista e continuação da narrativa."},
   {id:7, n:"Ato III · A expectativa", p:"17 a 21/11", a:"A captação continua enquanto começa a antecipação da oferta. Mostrar quais problemas a coleção aborda, para quem é e a programação da semana, sem revelar os nove entregáveis nem o preço. Preparar a live de domingo."},
   {id:8, n:"Ato IV · A estreia e a escolha", p:"22 a 26/11", a:"Abertura no domingo 22/11 com live e revelação da oferta. Nos dias seguintes: a conta, aplicação prática, prova e objeções, sem mudar o stack fechado."},
-  {id:9, n:"Ato V · O silêncio", p:"27/11", a:"Live final no dia da Black Friday. O silêncio como gesto de comunicação, seguido do encerramento real da condição no horário anunciado."},
-  {id:10, n:"Pós-campanha", p:"dezembro"}
+  {id:9, n:"Ato V · O silêncio", p:"27/11", a:"Live final no dia da Black Friday. O silêncio como gesto de comunicação, seguido do encerramento real da condição no horário anunciado."}
 ];
 
 const KEY_DATES = [
-  ["13/10","Oferta congelada",1],["21 e 22/10","Gravação 1",0],["05/11","Gravação 2",0],["12/11","Gravação 3",0],["31/10","Go/no-go",1],
+  ["16/10","Oferta congelada",1],["21/10","Gravação 1",0],["06/11","Gravação 2",0],["10/11","Ep. 1 no ar",0],["12/11","Gravação 3",0],["31/10","Go/no-go",1],
   ["01/11","Primeiro teaser",0],["10/11","Revelação",1],["20/11","Decisão de escala",0],
   ["22/11","Estreia 20:00",1],["24/11","Fim Balcão",0],["27/11","Silêncio e fim 23:59",1]
 ];
@@ -509,54 +508,54 @@ const TASKS = [
 {id:"t001",f:1,d:"10-07",r:["ges"],k:"c",t:"Kickoff: apresentar este cronograma e confirmar quem ocupa cada função",x:"Nomear copywriter, editor, designer, tráfego, tecnologia, social media e suporte."},
 {id:"t002",f:1,d:"10-08",r:["ges"],t:"Criar grupo da operação e rotina de status",x:"Sugestão: status rápido seg, qua e sex até 31/10. Diário a partir de 01/11."},
 {id:"t003",f:1,d:"10-09",r:["bar","vit","ges"],k:"c",t:"Definir parcelamento e preço final de divulgação",x:"R$ 997 à vista ou em 12x. Falta o valor exato da parcela (com ou sem juros) e como aparece na página."},
-{id:"t004",f:1,d:"10-09",r:["vit","ges"],k:"c",t:"Fechar regras dos lotes Plateia, Balcão e Galeria",x:"Plateia: 100 primeiras vendas, com contador verificável e regra se não bater 100 até 24/11. Balcão: até 24/11 às 23:59. Galeria: 25 a 27/11, só a coleção."},
-{id:"t005",f:1,d:"10-10",r:["bar"],k:"c",t:"Definir brinde do Lote Plateia e bônus do Lote Balcão",x:"Real e entregável. Informar formato e prazo de entrega para Tecnologia."},
-{id:"t006",f:1,d:"10-10",r:["vit","ges","tec"],k:"c",t:"Validar por escrito a garantia de 30 dias (7 + 21)",x:"O que muda entre os 7 e os 21 dias, como o aluno pede e o que acontece com o acesso. Confirmar que a plataforma suporta."},
-{id:"t007",f:1,d:"10-10",r:["vit","ges"],t:"Aprovar ou descartar o order bump",x:"+12 meses do app Anatomia dos Virais por R$ 97. Depende de viabilidade operacional."},
-{id:"t008",f:1,d:"10-10",r:["vit","ges","bar"],t:"Aprovar ou descartar o upsell",x:"Revisão de roteiros pelo time (30 vagas) ou mentoria coletiva de estreia. Definir quem entrega e em quanto tempo."},
+{id:"t004",f:1,d:"10-30",r:["vit","ges"],k:"c",t:"Fechar regras dos lotes Plateia, Balcão e Galeria",x:"Plateia: 100 primeiras vendas, com contador verificável e regra se não bater 100 até 24/11. Balcão: até 24/11 às 23:59. Galeria: 25 a 27/11, só a coleção."},
+{id:"t005",f:1,d:"10-30",r:["bar"],k:"c",t:"Definir brinde do Lote Plateia e bônus do Lote Balcão",x:"Real e entregável. Informar formato e prazo de entrega para Tecnologia."},
+{id:"t006",f:1,d:"10-30",r:["vit","ges","tec"],k:"c",t:"Confirmar por escrito a garantia de 30 dias (7 + 21)",x:"O que muda entre os 7 e os 21 dias, como o aluno pede e o que acontece com o acesso. Confirmar que a plataforma suporta."},
+{id:"t007",f:1,d:"11-10",r:["vit","ges"],t:"Aprovar ou descartar o order bump",x:"+12 meses do app Anatomia dos Virais por R$ 97. Depende de viabilidade operacional."},
+{id:"t008",f:1,d:"10-30",r:["vit","ges","bar"],t:"Aprovar ou descartar o upsell",x:"Revisão de roteiros pelo time (30 vagas) ou mentoria coletiva de estreia. Definir quem entrega e em quanto tempo."},
 {id:"t009",f:1,d:"10-10",r:["soc","vit","ges"],t:"Pedir depoimentos verificáveis de alunos com autorização de uso",x:"Prazo de recebimento: 16/10. Base do dia da prova (24/11)."},
 {id:"t010",f:1,d:"10-11",r:["ges","bar"],t:"Escolher a frase-núcleo da campanha",x:"Definida: “Em 7 anos, eu nunca fiz black friday. Essa é a primeira vez. E eu não vim gritar.”"},
-{id:"t011",f:1,d:"10-11",r:["vit","ges"],t:"Validar a tabela âncora x preço avulso vigente",x:"Documentar a fonte de cada âncora. Temas & Roteiros e Escola de Oradores custam R$ 297 avulso. Agente IA tinha previsão de R$ 697. Página e lives mostram essa diferença."},
-{id:"t012",f:2,d:"10-17",r:["bar"],t:"Roteiro final do manifesto (2 a 4 min)",x:"Partir do esboço abaixo. Decidir o destino do parágrafo riscado sobre abrir as contas.",doc:{n:"Ver esboço do manifesto",b:"Eu tenho uma confissão.\n\nHá sete anos eu ensino pessoas a se comunicar e se posicionar no digital.\nE nesses sete anos, eu nunca fiz uma Black Friday. Este ano, decidi fazer a primeira.\n\nQuando o mercado gritava, eu ficava de fora. Agora quero participar sem repetir o que sempre me incomodou nessa época.\n\nAí eu passei os últimos novembros observando. Os mesmos avisos. A maior oferta da história. Só hoje. Últimas vagas. E a mesma plateia do outro lado: gente que comprou no empurrão, e não pela transformação.\n\nVi as mesmas frases se repetirem a cada novembro. Urgência. Escassez. A maior oferta da história. Quando todo mundo tenta soar diferente usando as mesmas palavras, o resultado é o contrário: ninguém é ouvido.\n\nEu passo a vida ensinando exatamente isso: como ser ouvida.\n\nEntão eu tinha duas escolhas. Ficar quieta de novo. Ou entrar na única festa do ano que eu sempre evitei, do único jeito que eu sei: sem mentir, sem inflar, sem gritar.\n\n~~Nas próximas semanas, eu vou mostrar cada conta. O que tem dentro da oferta. Quanto cada coisa vale, e por quê. Você vai ver os números na minha frente, na sua frente.~~\n\nEm sete anos, a primeira vez.\n\nA minha Black Friday não começa com um contador regressivo. Começa com uma pergunta: o que acontece quando quem ensina a falar bem decide, finalmente, falar?"}},
-{id:"t013",f:2,d:"10-17",r:["bar"],t:"Roteiro do episódio de revelação do Comunicando.VOZ"},
-{id:"t014",f:2,d:"10-17",r:["bar"],t:"Roteiros dos teasers de 01, 04 e 07/11 e do episódio teaser do podcast",x:"Pistas de algo feito pela primeira vez, ligadas à trajetória dela. Proibido citar Black Friday."},
-{id:"t015",f:5,d:"11-03",r:["bar"],t:"Roteiros dos reels de continuação (13 e 16/11) e “para quem é” (18 e 19/11)",x:"Para a gravação 2 (05/11). Pode usar os aprendizados dos teasers. CTA para a lista. Sem stack, sem preço, sem checkout."},
-{id:"t016",f:1,d:"10-12",r:["vit","ges"],t:"Decidir se parceiros e afiliados entram na operação"},
-{id:"t017",f:1,d:"10-12",r:["tec","vit","ges"],k:"a",t:"Confirmar entrega automática e imediata dos 9 entregáveis após a compra",x:"O pré-cronograma previa entrega de acesso de 01 a 05/12. Comprador precisa de acesso no ato."},
+{id:"t011",f:1,d:"10-16",r:["vit","ges"],t:"Validar a tabela âncora x preço avulso vigente",x:"Documentar a fonte de cada âncora. Temas & Roteiros e Escola de Oradores custam R$ 297 avulso. Agente IA tinha previsão de R$ 697. Página e lives mostram essa diferença."},
+{id:"t012",f:2,d:"11-05",r:["bar"],t:"Roteiro final do manifesto (2 a 4 min)",x:"Partir do esboço abaixo. Decidir o destino do parágrafo riscado sobre abrir as contas. A gravação é em 06/11.",doc:{n:"Ver esboço do manifesto",b:"Eu tenho uma confissão.\n\nHá sete anos eu ensino pessoas a se comunicar e se posicionar no digital.\nE nesses sete anos, eu nunca fiz uma Black Friday. Este ano, decidi fazer a primeira.\n\nQuando o mercado gritava, eu ficava de fora. Agora quero participar sem repetir o que sempre me incomodou nessa época.\n\nAí eu passei os últimos novembros observando. Os mesmos avisos. A maior oferta da história. Só hoje. Últimas vagas. E a mesma plateia do outro lado: gente que comprou no empurrão, e não pela transformação.\n\nVi as mesmas frases se repetirem a cada novembro. Urgência. Escassez. A maior oferta da história. Quando todo mundo tenta soar diferente usando as mesmas palavras, o resultado é o contrário: ninguém é ouvido.\n\nEu passo a vida ensinando exatamente isso: como ser ouvida.\n\nEntão eu tinha duas escolhas. Ficar quieta de novo. Ou entrar na única festa do ano que eu sempre evitei, do único jeito que eu sei: sem mentir, sem inflar, sem gritar.\n\n~~Nas próximas semanas, eu vou mostrar cada conta. O que tem dentro da oferta. Quanto cada coisa vale, e por quê. Você vai ver os números na minha frente, na sua frente.~~\n\nEm sete anos, a primeira vez.\n\nA minha Black Friday não começa com um contador regressivo. Começa com uma pergunta: o que acontece quando quem ensina a falar bem decide, finalmente, falar?"}},
+{id:"t013",f:2,d:"11-03",r:["bar"],t:"Podcast ep. 1 (tese e revelação): roteiro",x:"A Bárbara escreve. Não passa por aprovação. Vai ao ar em 10/11, junto com o manifesto."},
+{id:"t014",f:2,d:"10-17",r:["bar"],t:"Roteiros dos teasers de 01, 04 e 07/11",x:"Pistas de algo feito pela primeira vez, ligadas à trajetória dela. Proibido citar Black Friday."},
+{id:"t015",f:2,d:"11-03",r:["bar"],t:"Roteiros dos reels de continuação (13 e 16/11) e “para quem é” (18 e 19/11)",x:"Para a gravação 2 (05/11). Pode usar os aprendizados dos teasers. CTA para a lista. Sem stack, sem preço, sem checkout."},
+{id:"t016",f:1,d:"10-30",r:["vit","ges"],t:"Decidir se parceiros e afiliados entram na operação"},
+{id:"t017",f:1,d:"11-10",r:["tec","vit","ges"],k:"a",t:"Confirmar entrega automática e imediata dos 9 entregáveis após a compra",x:"Comprador precisa de acesso no ato da compra, sem esperar."},
 {id:"t018",f:6,d:"11-10",r:["bar"],t:"Roteiros das peças da semana de vendas",x:"Para a gravação 3 (12/11), já com stack e preços avulsos confirmados. Matemática: vídeo longo e reel complementar (23/11). Depoimentos (24/11). Ordem de consumo (25/11). “Para quem não é” (26/11). Última chamada (27/11)."},
-{id:"t019",f:2,d:"10-19",r:["bar"],k:"c",t:"Aprovar a voz dos roteiros da gravação 1"},
-{id:"t020",f:1,d:"10-13",r:["ges"],k:"c",t:"MARCO: regras da oferta aprovadas e congeladas",x:"Stack, preço, lotes, garantia, bump e upsell. A partir daqui nada muda."},
+{id:"t019",f:2,d:"10-19",r:["bar"],k:"c",t:"Aprovar a voz dos roteiros dos teasers"},
+{id:"t020",f:1,d:"10-16",r:["ges"],k:"c",t:"MARCO: regras da oferta aprovadas e congeladas",x:"Stack dos 9 itens, preço e âncoras congelados. Lotes, brinde, bônus, garantia e upsell fecham até 30/10. Order bump até 10/11."},
 
 /* FASE 2 */
-{id:"t021",f:2,d:"10-21",r:["bar","edi"],t:"Gravação 1, dia 1: manifesto completo e teasers",x:"Os teasers e os cortes de anúncio saem da mesma sessão do manifesto."},
+{id:"t021",f:2,d:"10-21",r:["bar","edi"],t:"Gravação 1: teasers",x:"Teasers de 01, 04 e 07/11 e cortes curtos para os ads de descoberta."},
 {id:"t022",f:2,d:"10-14",r:["tra"],t:"Levantar CPL e CAC de 2025 no CSV como referência",x:"Referência de teto para os checkpoints. Sem extrapolar como meta."},
-{id:"t023",f:2,d:"10-22",r:["bar","edi"],t:"Gravação 1, dia 2: episódio de revelação e episódio teaser do podcast"},
+{id:"t023",f:5,d:"11-06",r:["bar","edi"],t:"Podcast ep. 1: gravação",x:"No mesmo dia da gravação 2."},
 {id:"t024",f:6,d:"11-12",r:["bar","edi"],t:"Gravação 3: peças da semana de vendas",x:"Matemática, depoimentos, ordem de consumo, “Para quem não é” e última chamada."},
 {id:"t025",f:2,d:"10-16",r:["soc"],t:"Fechar banco de depoimentos com autorização assinada"},
 
 /* FASE 3 */
-{id:"t026",f:3,d:"10-20",r:["des","bar"],t:"Key visual da campanha “A Primeira Vez”",x:"Paleta, tipografia e assinatura “by Bárbara Torres”. Base de páginas, thumbs e criativos."},
-{id:"t027",f:3,d:"10-20",r:["cop"],t:"Copy da página de captura da lista da estreia"},
-{id:"t028",f:3,d:"10-20",r:["cop"],k:"s",t:"Copy da mensagem de boas-vindas da lista (e-mail e WhatsApp)"},
-{id:"t029",f:3,d:"10-22",r:["cop"],t:"Copy da página de vendas",x:"Rascunho em andamento na aba PV. Stack na ordem falar, soar, aparecer, posicionar. Conta de R$ 9.767 com âncora x avulso vigente. Lotes, garantia, FAQ e para quem não é."},
+{id:"t026",f:3,d:"10-30",r:["des","bar"],t:"Key visual da campanha “A Primeira Vez”",x:"Paleta, tipografia e assinatura “by Bárbara Torres”. Base de páginas, thumbs, criativos e cartaz. Os teasers de 01 a 09/11 não usam o key visual, porque não podem revelar a campanha."},
+{id:"t027",f:3,d:"10-30",r:["cop"],t:"Copy da página de captura da lista da estreia"},
+{id:"t028",f:3,d:"10-30",r:["cop"],k:"s",t:"Copy da mensagem de boas-vindas da lista (e-mail e WhatsApp)",x:"Rascunho na aba Email & WPP."},
+{id:"t029",f:3,d:"11-18",r:["cop"],t:"Copy da página de vendas",x:"Fechar a copy (rascunho na aba PV) e montar a página até 18/11."},
 {id:"t030",f:3,d:"10-22",r:["cop"],t:"Copy dos anúncios por fase",x:"Descoberta, captação, antecipação e vendas. Na venda, um ângulo por capítulo do dia."},
-{id:"t031",f:3,d:"10-25",r:["edi"],t:"Editar o manifesto completo (Instagram e YouTube)"},
-{id:"t032",f:3,d:"10-27",r:["edi"],t:"Editar episódio teaser e episódio de revelação do podcast"},
-{id:"t033",f:3,d:"10-27",r:["edi"],t:"Cortes do manifesto: 2 ou 3 de 30 a 45 s e variações de 10 a 20 s",x:"Aberturas diferentes para teste em ads."},
+{id:"t031",f:5,d:"11-07",r:["edi"],t:"Editar o manifesto completo (Instagram e YouTube)",x:"Manifesto completo para Instagram e YouTube. Pronto até 07/11 para publicar em 10/11."},
+{id:"t032",f:5,d:"11-08",r:["edi"],t:"Podcast ep. 1: edição e upload agendado para 10/11"},
+{id:"t033",f:5,d:"11-07",r:["edi"],t:"Cortes do manifesto: 2 ou 3 de 30 a 45 s e variações de 10 a 20 s",x:"Aberturas diferentes para teste em ads de captação."},
 {id:"t034",f:3,d:"10-24",r:["cop"],t:"Escrever e-mails e mensagens de WhatsApp da campanha",x:"Rascunho na aba Email & WPP: 14 e-mails e 16 mensagens, de 10/11 a 27/11."},
-{id:"t035",f:3,d:"10-24",r:["tec"],t:"Montar página de captura com formulário, consentimento e automação",x:"Registrar origem e consentimento de cada contato."},
-{id:"t036",f:3,d:"10-24",r:["tec"],t:"Configurar checkout: produto, parcelamento, order bump e upsell"},
+{id:"t035",f:5,d:"11-05",r:["tec"],t:"Montar página de captura com formulário, consentimento e automação",x:"Depende da copy da página de captura (30/10). Registrar origem e consentimento de cada contato."},
+{id:"t036",f:3,d:"10-24",r:["tec"],t:"Configurar checkout: produto, parcelamento, order bump e upsell",x:"O order bump entra depois da decisão (até 10/11)."},
 {id:"t037",f:3,d:"10-27",r:["edi"],t:"Editar teasers de 01, 04 e 07/11",x:"Prontos a tempo de subir para aprovação da Meta em 29/10."},
 {id:"t038",f:3,d:"10-26",r:["tec"],t:"Cupons dos lotes com trocas programadas e limite de 100 no Plateia",x:"Troca em 24/11 às 23:59 e Galeria a partir de 25/11 às 00:00."},
 {id:"t039",f:3,d:"10-26",r:["tec"],t:"Pixel, API de conversões, UTMs e dashboard de acompanhamento"},
-{id:"t040",f:3,d:"10-27",r:["tec"],t:"Montar página de vendas (oculta até 22/11)"},
+{id:"t040",f:7,d:"11-18",r:["tec"],t:"Montar página de vendas (oculta até 22/11)",x:"Junto com o fechamento da copy. Fica oculta até 22/11."},
 {id:"t041",f:3,d:"10-27",r:["tec"],t:"Página de obrigado e fluxo de entrega automática de acesso"},
-{id:"t042",f:3,d:"10-27",r:["des"],t:"Thumbnails do YouTube e capas dos episódios"},
-{id:"t043",f:3,d:"10-27",r:["des"],t:"Criativos estáticos para ads"},
+{id:"t042",f:5,d:"11-05",r:["des"],t:"Thumbnails do YouTube e capas dos episódios do podcast",x:"Depende do key visual (30/10)."},
+{id:"t043",f:5,d:"11-05",r:["des"],t:"Criativos estáticos para ads de captação",x:"Depende do key visual (30/10)."},
 {id:"t044",f:3,d:"10-27",r:["tra"],t:"Estrutura de campanhas por fase e públicos",x:"Descoberta, captação, antecipação e vendas. Públicos de engajamento, lista e exclusão de compradores."},
 {id:"t045",f:3,d:"10-27",r:["cop"],t:"Legendas de todos os posts de 01 a 27/11"},
 {id:"t046",f:7,d:"11-18",r:["edi"],t:"Editar peças da semana de vendas"},
-{id:"t047",f:3,d:"10-28",r:["des"],t:"Cartaz da programação da semana e tabela visual da conta"},
+{id:"t047",f:5,d:"11-05",r:["des"],t:"Cartaz da programação da semana e tabela visual da conta",x:"Depende do key visual (30/10)."},
 {id:"t048",f:3,d:"10-28",r:["tra"],t:"Documentar a regra de escala de verba",x:"R$ 100 mil base. R$ 150 mil e R$ 200 mil só com dados dos checkpoints. Distribuição 10% descoberta, 45% captação, 5% antecipação, 30% vendas, 10% reserva."},
 {id:"t049",f:3,d:"10-28",r:["tec"],k:"c",t:"Teste de ponta a ponta com compra real",x:"Compra, bump, upsell, cupom de lote, acesso liberado e reembolso."},
 {id:"t050",f:3,d:"10-28",r:["tec"],k:"s",t:"Criar link de checkout reserva para contingência"},
@@ -577,15 +576,14 @@ const TASKS = [
 {id:"t061",f:5,d:"11-01",r:["tra"],t:"Ads de descoberta no ar",x:"R$ 10 mil no cenário base. Testar aberturas dos teasers."},
 {id:"t062",f:5,d:"11-04",r:["soc"],t:"Publicar teaser 02"},
 {id:"t063",f:5,d:"11-05",r:["tra","vit","ges"],k:"c",t:"CHECKPOINT de descoberta",x:"Retenção, taxa de gancho e custo por mil. Pausar o que não segura atenção."},
-{id:"t123",f:5,d:"11-05",r:["bar","edi"],k:"a",t:"Gravação 2: reels de continuação e “para quem é”",x:"Peças de 13, 16, 18 e 19/11."},
+{id:"t123",f:5,d:"11-06",r:["bar","edi"],k:"a",t:"Gravação 2: manifesto, reels de continuação e “para quem é”",x:"Manifesto completo e peças de 13, 16, 18 e 19/11."},
 {id:"t124",f:5,d:"11-09",r:["edi"],k:"a",t:"Editar reels de continuação e “para quem é”"},
-{id:"t064",f:5,d:"11-05",r:["soc"],t:"Publicar episódio teaser do podcast e versão no YouTube",x:"Data sugerida. Sem revelar o evento."},
 {id:"t065",f:5,d:"11-07",r:["soc"],t:"Publicar teaser 03"},
-{id:"t066",f:5,d:"11-08",r:["tra"],t:"Campanhas de captação aprovadas e prontas para 10/11"},
+{id:"t066",f:5,d:"11-08",r:["tra"],k:"c",t:"Subir os cortes do manifesto para aprovação da Meta",x:"Assim que os cortes ficarem prontos (07/11). A aprovação leva de 48 a 72 h: se atrasar, os ads de captação podem entrar em 11 ou 12/11."},
 {id:"t067",f:5,d:"11-09",r:["tec"],t:"Teste final da página de captura e da automação"},
 
 /* FASE 6 */
-{id:"t068",f:6,d:"11-10",r:["soc"],k:"c",t:"Publicar manifesto no Instagram e YouTube e episódio de revelação"},
+{id:"t068",f:6,d:"11-10",r:["soc"],k:"c",t:"Publicar manifesto no Instagram e YouTube e o episódio 1 do podcast"},
 {id:"t069",f:6,d:"11-10",r:["tec"],t:"Página de captura no ar"},
 {id:"t070",f:6,d:"11-10",r:["tra"],t:"Ads de captação no ar",x:"R$ 45 mil no cenário base. Cortes do manifesto com CTA para a lista. CPL de 2025 como teto de referência."},
 {id:"t071",f:6,d:"11-10",r:["tec"],k:"s",t:"Disparar e-mail de revelação para a base com permissão"},
@@ -596,9 +594,13 @@ const TASKS = [
 {id:"t074",f:6,d:"11-13",r:["soc"],t:"Publicar reel de continuação 1 com convite para a lista"},
 {id:"t075",f:6,d:"11-14",r:["bar"],t:"Roteiros finais da live de estreia e da live de fechamento",x:"Fechamento com os dez segundos de silêncio."},
 {id:"t076",f:6,d:"11-16",r:["soc"],t:"Publicar reel de continuação 2 com convite para a lista"},
+{id:"t128",f:6,d:"11-10",r:["bar"],k:"s",t:"Podcast ep. 2: roteiro",x:"A Bárbara escreve. Não passa por aprovação. Vai ao ar em 17/11, uma semana depois do ep. 1. Sugestão de tema: a premissa da campanha (a Black Friday morreu de homogeneidade) e para quem é a coleção, sem preço e sem stack."},
+{id:"t129",f:6,d:"11-12",r:["bar","edi"],k:"s",t:"Podcast ep. 2: gravação",x:"No mesmo dia da gravação 3."},
+{id:"t130",f:6,d:"11-15",r:["edi"],k:"s",t:"Podcast ep. 2: edição e upload agendado para 17/11"},
 
 /* FASE 7 */
 {id:"t077",f:7,d:"11-17",r:["soc"],t:"Publicar cartaz da programação da semana"},
+{id:"t064",f:7,d:"11-17",r:["soc"],k:"s",t:"Publicar o episódio 2 do podcast"},
 {id:"t078",f:7,d:"11-17",r:["tra"],t:"Ads de antecipação no ar",x:"R$ 5 mil. Públicos engajados e retargeting."},
 {id:"t079",f:7,d:"11-17",r:["vit","ges"],t:"Compartilhar cartaz com 2 ou 3 parceiros (se aprovados)"},
 {id:"t080",f:7,d:"11-18",r:["bar"],t:"Aprovar roteiros das lives"},
@@ -609,7 +611,7 @@ const TASKS = [
 {id:"t084",f:7,d:"11-20",r:["tec"],t:"Disparo 1: “Faltam dois dias” (sem link de compra)"},
 {id:"t085",f:7,d:"11-21",r:["tec"],t:"Disparo 2: “Amanhã, pela primeira vez”"},
 {id:"t086",f:7,d:"11-21",r:["bar","tec"],t:"Ensaio técnico da live de estreia"},
-{id:"t087",f:7,d:"11-21",r:["tec"],t:"Página de vendas pré-testada e cupons conferidos"},
+{id:"t087",f:7,d:"11-21",r:["tec"],t:"Página de vendas pré-testada e cupons conferidos",x:"Reteste completo antes da estreia: compra, order bump, upsell, cupons dos lotes e entrega automática de acesso."},
 {id:"t088",f:7,d:"11-21",r:["tra"],t:"Campanhas de vendas aprovadas pela Meta"},
 
 /* FASE 8 */
@@ -644,13 +646,6 @@ const TASKS = [
 {id:"t115",f:9,d:"11-28",r:["soc","bar"],k:"s",t:"Post de agradecimento e encerramento"},
 
 /* FASE 10 */
-{id:"t116",f:10,d:"12-05",r:["sup","tec"],k:"a",t:"Reforço de onboarding e conferência de acessos",x:"Acesso já liberado na compra. Aqui é o reforço."},
-{id:"t117",f:10,d:"12-05",r:["sup"],t:"Recolher dúvidas frequentes e tratar reembolsos dentro da garantia"},
-{id:"t118",f:10,d:"12-08",r:["cop","vit","ges"],t:"Convite de diagnóstico do Ciclo 90 para compradores"},
-{id:"t119",f:10,d:"12-10",r:["tra","vit","ges"],t:"Análise por canal, lote e coorte"},
-{id:"t120",f:10,d:"12-15",r:["vit","ges"],t:"Entregar revisões de roteiros do upsell (se aprovado)"},
-{id:"t121",f:10,d:"12-15",r:["tod"],k:"c",t:"Relatório final de aprendizados e reunião de retrospectiva"},
-{id:"t122",f:10,d:"12-28",r:["vit","ges"],k:"s",t:"Fechar número de reembolsos após o fim da garantia",x:"Garantia de 30 dias das últimas vendas termina em 27/12."}
 ];
 
 /* ================= DEFINIÇÕES =================
@@ -709,7 +704,7 @@ const DEFS = [
   {c:"Canais e peças", k:"Peças do manifesto", v:"Manifesto completo: Instagram, YouTube e podcast em 10/11\nReel de 30 a 45 s: teasers e anúncios\nCortes de 10 a 20 s: testes de abertura em ads\nConvite derivado: ads de captação de 10 a 21/11", s:"ok"},
   {c:"Canais e peças", k:"Reels, TikTok e Shorts", v:"Teasers até 09/11, cortes do manifesto após 10/11, peças da oferta após 22/11", s:"ok"},
   {c:"Canais e peças", k:"YouTube", v:"Versões longas: manifesto, matemática e lives", s:"ok"},
-  {c:"Canais e peças", k:"Podcast Comunicando.VOZ", v:"Teasers antes de 10/11 e episódio de revelação no dia 10", s:"ok"},
+  {c:"Canais e peças", k:"Podcast Comunicando.VOZ", v:"Ep. 1 (tese e revelação) em 10/11\nEp. 2 em 17/11", s:"ok"},
   {c:"Canais e peças", k:"Comunidade", v:"FALA e Comunicando como plateia interna na semana de vendas", s:"ok"},
   {c:"Canais e peças", k:"Parceiros e afiliados", v:"Entram ou não na operação", s:"pen", t:"t016"},
 
@@ -718,10 +713,7 @@ const DEFS = [
   {c:"Mídia", k:"Distribuição", v:"10% descoberta, 45% captação, 5% antecipação, 30% vendas, 10% reserva", s:"ok"},
   {c:"Mídia", k:"Cenário R$ 100 mil", v:"Descoberta (01 a 10/11): R$ 10 mil\nCaptação (10 a 21/11): R$ 45 mil\nAntecipação (17 a 21/11): R$ 5 mil\nVendas (22 a 27/11): R$ 30 mil\nReserva: R$ 10 mil", s:"ok"},
   {c:"Mídia", k:"Cenário R$ 150 mil", v:"Descoberta: R$ 15 mil\nCaptação: R$ 67,5 mil\nAntecipação: R$ 7,5 mil\nVendas: R$ 45 mil\nReserva: R$ 15 mil", s:"ok"},
-  {c:"Mídia", k:"Referência de custo", v:"CPL do CSV de 2025", s:"ok", n:"Referência de teto. Sem extrapolar como meta.", t:"t022"},
-
-  /* PÓS-CAMPANHA */
-  {c:"Pós-campanha", k:"Compradores", v:"Convite para diagnóstico do Ciclo 90 em dezembro", s:"ok", n:"Aluno de R$ 997 é lead quente para alto ticket.", t:"t118"}
+  {c:"Mídia", k:"Referência de custo", v:"CPL do CSV de 2025", s:"ok", n:"Referência de teto. Sem extrapolar como meta.", t:"t022"}
 ];
 const ST = {ok:"Definido", par:"Parcial", pen:"Pendente", des:"Descartado"};
 
