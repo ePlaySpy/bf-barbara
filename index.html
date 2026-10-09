@@ -529,7 +529,7 @@ const TASKS = [
 {id:"n02",g:"b1",d:"10-30",r:["vit","ges","bar"],t:"Definição dos lotes"},
 {id:"n03",g:"b1",d:"10-30",r:["des","bar"],t:"Key visual"},
 {id:"n04",g:"b2",d:"10-29",r:["tra"],t:"Criativos de descoberta e teaser"},
-{id:"n05",g:"b2",d:"11-01",r:["bar"],t:"Manifesto no ar",x:"Sem citar Black Friday. A revelação é em 10/11."},
+{id:"n05",g:"b2",d:"11-01",r:["bar"],t:"Manifesto no ar",x:"Sem citar Black Friday. A revelação é em 10/11.",doc:{n:"Ver esboço do manifesto",b:"Eu tenho uma confissão.\n\nHá sete anos eu ensino pessoas a se comunicar e se posicionar no digital.\nE nesses sete anos, eu nunca fiz uma Black Friday. Este ano, decidi fazer a primeira.\n\nQuando o mercado gritava, eu ficava de fora. Agora quero participar sem repetir o que sempre me incomodou nessa época.\n\nAí eu passei os últimos novembros observando. Os mesmos avisos. A maior oferta da história. Só hoje. Últimas vagas. E a mesma plateia do outro lado: gente que comprou no empurrão, e não pela transformação.\n\nVi as mesmas frases se repetirem a cada novembro. Urgência. Escassez. A maior oferta da história. Quando todo mundo tenta soar diferente usando as mesmas palavras, o resultado é o contrário: ninguém é ouvido.\n\nEu passo a vida ensinando exatamente isso: como ser ouvida.\n\nEntão eu tinha duas escolhas. Ficar quieta de novo. Ou entrar na única festa do ano que eu sempre evitei, do único jeito que eu sei: sem mentir, sem inflar, sem gritar.\n\n~~Nas próximas semanas, eu vou mostrar cada conta. O que tem dentro da oferta. Quanto cada coisa vale, e por quê. Você vai ver os números na minha frente, na sua frente.~~\n\nEm sete anos, a primeira vez.\n\nA minha Black Friday não começa com um contador regressivo. Começa com uma pergunta: o que acontece quando quem ensina a falar bem decide, finalmente, falar?"}},
 {id:"n06",g:"b2",d:"11-01",r:["bar"],t:"Teasers de 01, 04 e 07/11"},
 {id:"n07",g:"b2",d:"11-05",r:["cop","des","tec"],t:"Página de captura e fluxo"},
 {id:"n08",g:"b2",d:"11-05",r:["tec"],t:"Grupos de WhatsApp configurados"},
@@ -756,7 +756,8 @@ function render(){
     ts.forEach(t=>{
       const s=status(t), st=state[t.id];
       const by=st&&st.d?`<span class="chk">✓ ${esc(st.by&&RESP[st.by]?RESP[st.by].n:"")}${st.at?" "+esc(st.at):""}</span>`:"";
-      html+=`<label class="itm ${s}"><input type="checkbox" data-id="${t.id}"${s==="done"?" checked":""}><span class="rt"><span class="rtt">${esc(t.t)}</span>${t.x?`<span class="rtx">${esc(t.x)}</span>`:""}${by}</span><span class="rw">${t.r.map(r=>`<span class="who"><span class="dot" style="background:${RESP[r].c}"></span>${esc(RESP[r].n)}</span>`).join("")}</span><span class="rd">${fmt(t.d).d}</span></label>`;
+      const tag=t.doc?"div":"label";
+      html+=`<${tag} class="itm ${s}"><input type="checkbox" data-id="${t.id}"${s==="done"?" checked":""}><span class="rt"><span class="rtt">${esc(t.t)}</span>${t.x?`<span class="rtx">${esc(t.x)}</span>`:""}${t.doc?`<details class="doc"><summary>${esc(t.doc.n)}</summary><div class="db">${esc(t.doc.b).replace(/~~([\s\S]*?)~~/g,"<del>$1</del>")}</div></details>`:""}${by}</span><span class="rw">${t.r.map(r=>`<span class="who"><span class="dot" style="background:${RESP[r].c}"></span>${esc(RESP[r].n)}</span>`).join("")}</span><span class="rd">${fmt(t.d).d}</span></${tag}>`;
     });
     html+=`</section>`;
   });
